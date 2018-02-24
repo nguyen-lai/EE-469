@@ -1,0 +1,11 @@
+`timescale 1ns/10ps
+module regfile (ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, WriteRegister, RegWrite, clk);
+	input logic RegWrite, clk;
+	input logic [4:0] WriteRegister, ReadRegister1, ReadRegister2;
+	input logic [63:0] WriteData, ;
+	output logic [63:0] ReadData1, ReadData2;
+	
+	logic [31:0] decoded;
+	
+	decoder_5to32 TheDecoder (.WriteRegister, .decoded, .RegWrite);
+endmodule

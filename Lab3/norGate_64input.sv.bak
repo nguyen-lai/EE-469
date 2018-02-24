@@ -1,0 +1,23 @@
+module norGate_64input(out, in);
+	input logic [63:0] in;
+	output logic out;
+	parameter DELAY = 0.05;
+	
+	logic [15:0] intoAndGate;
+	logic [3:0] intoResult;
+	genvar i,j;
+	generate 
+	
+	for (i = 0; i < 16; i++) begin: eachNorGate
+		nor #DELAY theNorGate (intoAndGate[i], in[i*4], in[(i*4)+1], in[(i*4)+2], in[(i*4)+3]);
+		end
+		
+	for (j = 0, j < 4; j++) begin eachAndGate
+		and #DELAY theAndGate1 (intoResult[i], intoAndGate[i*4], intoAndGate[(i*4)+1], intoAndGate[(i*4)+2], intoAndGate[(i*4)+3]);
+		end
+	endgenerate
+	
+	and #DELAY theFinalAndGate (out, intoResult[1], intoResult[2], intoResult[3], intoResult[4]);
+	
+endmodule
+

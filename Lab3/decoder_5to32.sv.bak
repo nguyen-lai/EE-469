@@ -1,0 +1,30 @@
+`timescale 1ns/10ps
+
+// 5-to-32 decoder from 2-to-4 decoder and 3-to-8 decoder
+module decoder_5to32 (writeRegister, decoded, regWrite);
+	input logic [4:0] writeRegister;
+	input logic regWrite;
+	output logic [31:0] decoded;
+	
+	logic [3:0] 
+	
+	
+endmodule
+
+module decoder_3to8_testbench;
+	logic writeEnabler;
+	logic [7:0]decoded;
+	logic [2:0]encoded;
+	
+	decoder_3to8 dut(.decoded, .encoded, .writeEnabler);
+
+	initial begin
+		integer i;
+		writeEnabler = 1;
+		for(i = 0; i < 8; i++) 
+		begin
+			encoded = i;
+			#100;
+		end
+	end
+endmodule

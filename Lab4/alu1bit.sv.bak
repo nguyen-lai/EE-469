@@ -1,0 +1,19 @@
+`timescale 1ns/10ps
+
+module alu1bit(a, b, carryIn, carryOut, control, result)
+	input logic a, b, carryIn;
+	input logic [2:0] control;
+	output logic result;
+	parameter DELAY = 0.05;
+	
+	// Perform Logical Operation
+	logic andOut, orOut, xorOut;
+	and #DELAY theAndGate (andOut, a, b);
+	or  #DELAY theOrGate  (orOut,  a, b);
+	xor #DELAY theXorGate (xorOut, a, b);
+	
+	
+	
+	
+endmodule
+	

@@ -1,0 +1,26 @@
+module decoder_2to4 (encoded, decoded, writeEnabler);
+	input logic [1:0] encoded;
+	input logic writeEnabler;
+	output logic [3:0] decoded;
+	
+	and Output0 (decoded[0], ~encoded[0], ~encoded[1], writeEnabler);
+	and Output1 (decoded[1],  encoded[0], ~encoded[1], writeEnabler);
+	and Output2 (decoded[2], ~encoded[0],  encoded[1], writeEnabler);
+	and Output3 (decoded[3],  encoded[0],  encoded[1], writeEnabler);
+	
+endmodule
+
+module decoder_2to4_testbench;
+	logic writeEnabler;
+	logic [3:0]decoded;
+	logic [1:0]encoded;
+	initial begin
+		integer i;
+		writeEnabler = 1;
+		for(i = 0; i < 4; i++) 
+		begin
+			encoded = i;
+		end
+	end
+	decoder_2to4 dut(.decoded, .encoded, .writeEnabler);
+endmodule

@@ -1,0 +1,11 @@
+/*************************************************
+Nguyen Lai
+1572743
+Winter 2018
+CSE 469
+Lab 4
+
+IF/ID register to pass instruction to other stages 
+	
+*********************************************/
+module IFID_register(clk, reset, IF_PC, ID_PC, IF_instruction, 

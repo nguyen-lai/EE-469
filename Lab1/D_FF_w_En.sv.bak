@@ -1,0 +1,19 @@
+module D_FF_w_En #(parameter WIDTH=64) (d, q, en, reset, clk);
+	input logic  [WIDTH-1:0] d;
+	input logic  en, reset, clk;
+	output logic [WIDTH-1:0] q;
+	
+	logic [WIDTH-1:0] data;
+	
+	initial assert(WIDTH>0);
+	
+	genvar i;
+	
+	generate
+		for(i=0; i<WIDTH; i++) begin: eachDff
+				
+		end
+		
+	endgenerate
+	
+endmodule

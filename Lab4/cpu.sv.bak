@@ -1,0 +1,6 @@
+module cpu(clk, reset);
+	input logic clk, reset;
+	logic [31:0] instruction;
+	logic UncondBr, BrTaken;
+	
+	instructFetch FetchInstruction (.instruction, .UncondBr, .BrTaken, .clk, .reset);

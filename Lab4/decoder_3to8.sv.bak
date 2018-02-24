@@ -1,0 +1,30 @@
+module decoder_3to8 (encoded, decoded, writeEnabler);
+	input logic [2:0] encoded;
+	input logic writeEnabler;
+	output logic [7:0] decoded;
+	
+	and #50 Output0 (decoded[0], ~encoded[0], ~encoded[1], ~encoded[2], writeEnabler);
+	and #50 Output1 (decoded[1],  encoded[0], ~encoded[1], ~encoded[2], writeEnabler);
+	and #50 Output2 (decoded[2], ~encoded[0],  encoded[1], ~encoded[2], writeEnabler);
+	and #50 Output3 (decoded[3],  encoded[0],  encoded[1], ~encoded[2], writeEnabler);	
+	and #50 Output4 (decoded[4], ~encoded[0], ~encoded[1],  encoded[2], writeEnabler);
+	and #50 Output5 (decoded[5],  encoded[0], ~encoded[1],  encoded[2], writeEnabler);
+	and #50 Output6 (decoded[6], ~encoded[0],  encoded[1],  encoded[2], writeEnabler);
+	and #50 Output7 (decoded[7],  encoded[0],  encoded[1],  encoded[2], writeEnabler);
+	
+endmodule
+
+module decoder_3to8_testbench;
+	logic writeEnabler;
+	logic [7:0]decoded;
+	logic [2:0]encoded;
+	initial begin
+		integer i;
+		writeEnabler = 1;
+		for(i = 0; i < 8; i++) 
+		begin
+			encoded = i;
+		end
+	end
+	decoder_3to8 dut(.decoded, .encoded, .writeEnabler);
+endmodule

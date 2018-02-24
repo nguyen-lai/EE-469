@@ -1,0 +1,11 @@
+`timescale 1ns/10ps
+module datapath (Reg2Loc, RegWrite, ALUSrc, ALUOp, MemWrite, MemToReg, instruction, clk, reset, overflow, negative, zero);
+	input logic [31:0] instruction;
+	input logic Reg2Loc, RegWrite, MemWrite, MemToReg, clk, reset;
+	input logic [1:0] ALUSrc;
+	input logic [2:0] ALUOp;
+	output logic overflow, negative, zero;
+	
+	
+	
+endmodule

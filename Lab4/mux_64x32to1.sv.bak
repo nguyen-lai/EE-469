@@ -1,0 +1,16 @@
+`timescale 1ns/10ps
+module mux_64x32to1 (select, in, out);
+	input logic [31:0][63:0] in;
+	input logic [4:0] select;
+	output logic [63:0] out;
+	
+	assign in[31] = 64'b0;
+	
+	genvar i
+	generate 
+		for(i = 0; i < 64; i++)begin : eachMultiplexer
+			mux_32to1 TheMux (.select(select), .in(in[i]), .out(out[i]));
+		end
+	endgenerate
+endmodule
+			

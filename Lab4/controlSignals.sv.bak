@@ -1,0 +1,58 @@
+module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, Zero, MemWrite, MemToReg, UncondBr, BrTaken, instruction, zero, negative, overflow);
+	input logic [31:0] instruction;
+	input logic Zero, negative, overflow;
+	output logic Reg2Loc, RegWrite, ALUSrc, Zero, MemWrite, MemToReg, UncondBr, BrTaken;
+	output logic [2:0] ALUOp;
+	
+	parameter B = 11'b000101xxxxx,
+				ADDI = 11'b1001000100x,
+				ADDS = 11'b10101011000,
+				SUBS = 11'b11101011000;
+				
+	always_comb begin
+		casex (instruction[31:21])
+			B: begin
+				Reg2Loc = 1'bx;
+				RegWrite = 1'b0;
+				ALUSrc = 1'bx;
+				ALUOp = 3'bxxx;
+				MemWrite = 1'b0;
+				MemToReg = 1'bx;
+				UncondBr = 1'b1;
+				BrTaken = 1'b1;
+				end
+			
+			ADDI: begin
+				Reg2Loc = 1'b1;
+				RegWrite = 1'b1;
+				ALUSrc = 1'b1;
+				ALUOp = 3'b010;
+				MemWrite = 1'b0;
+				MemToReg = 1'b0;
+				UncondBr = 1'bx;
+				BrTaken = 1'b0;
+				end
+				
+			ADDS: begin
+				Reg2Loc = 1'b1;
+				RegWrite = 1'b1;
+				ALUSrc = 1'b0;
+				ALUOp = 3'b010;
+				MemWrite = 1'b0;
+				MemToReg = 1'b0;
+				UncondBr = 1'bx;
+				BrTaken = 1'b0;
+				end
+				
+			SUBS: begin
+				Reg2Loc = 1'b1;
+				RegWrite = 1'b1;
+				ALUSrc = 1'b0;
+				ALUOp = 3'b011;
+				MemWrite = 1'b0;
+				MemToReg = 1'b0;
+				UncondBr = 1'bx;
+				BrTaken = 1'b0;
+				end			
+	end
+endmodule

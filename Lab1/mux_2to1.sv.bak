@@ -1,0 +1,12 @@
+module mux_2to1 (select, a, b, y);
+	input logic a, b, select;
+	output logic y;
+	
+	logic a_Out, b_Out;
+		
+	and AndGate1(a_Out, a, ~select);
+	and AndGate2(b_Out, b,  select);
+	or  OrGate  (y, a_Out, b_Out);
+	
+endmodule
+	
