@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Thu Feb 22 18:25:42 2018
+Fri Feb 23 18:02:19 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Thu Feb 22 18:25:42 2018           ;
+; Analysis & Elaboration Status ; Failed - Fri Feb 23 18:02:19 2018           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; instructFetch                               ;
@@ -162,106 +162,108 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Thu Feb 22 18:25:30 2018
+    Info: Processing started: Fri Feb 23 18:02:07 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 4 design units, including 4 entities, in source file math.sv
-    Info (12023): Found entity 1: mult File: C:/Users/Nguyen/Documents/EE 469/Lab4/math.sv Line: 3
-    Info (12023): Found entity 2: shifter File: C:/Users/Nguyen/Documents/EE 469/Lab4/math.sv Line: 33
-    Info (12023): Found entity 3: shifter_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/math.sv Line: 48
-    Info (12023): Found entity 4: mult_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/math.sv Line: 68
+    Info (12023): Found entity 1: mult File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 3
+    Info (12023): Found entity 2: shifter File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 33
+    Info (12023): Found entity 3: shifter_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 48
+    Info (12023): Found entity 4: mult_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 68
 Info (12021): Found 2 design units, including 2 entities, in source file instructmem.sv
-    Info (12023): Found entity 1: instructmem File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructmem.sv Line: 17
-    Info (12023): Found entity 2: instructmem_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructmem.sv Line: 57
+    Info (12023): Found entity 1: instructmem File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 17
+    Info (12023): Found entity 2: instructmem_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 57
 Info (12021): Found 2 design units, including 2 entities, in source file datamem.sv
-    Info (12023): Found entity 1: datamem File: C:/Users/Nguyen/Documents/EE 469/Lab4/datamem.sv Line: 12
-    Info (12023): Found entity 2: datamem_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/datamem.sv Line: 70
+    Info (12023): Found entity 1: datamem File: C:/Users/Nguyen/Documents/EE-469/Lab4/datamem.sv Line: 12
+    Info (12023): Found entity 2: datamem_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/datamem.sv Line: 70
 Info (12021): Found 2 design units, including 2 entities, in source file register.sv
-    Info (12023): Found entity 1: register File: C:/Users/Nguyen/Documents/EE 469/Lab4/register.sv Line: 10
-    Info (12023): Found entity 2: register_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/register.sv Line: 33
+    Info (12023): Found entity 1: register File: C:/Users/Nguyen/Documents/EE-469/Lab4/register.sv Line: 10
+    Info (12023): Found entity 2: register_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/register.sv Line: 33
 Info (12021): Found 2 design units, including 2 entities, in source file regfile.sv
-    Info (12023): Found entity 1: regfile File: C:/Users/Nguyen/Documents/EE 469/Lab4/regfile.sv Line: 28
-    Info (12023): Found entity 2: regstim File: C:/Users/Nguyen/Documents/EE 469/Lab4/regfile.sv Line: 61
+    Info (12023): Found entity 1: regfile File: C:/Users/Nguyen/Documents/EE-469/Lab4/regfile.sv Line: 28
+    Info (12023): Found entity 2: regstim File: C:/Users/Nguyen/Documents/EE-469/Lab4/regfile.sv Line: 61
 Info (12021): Found 2 design units, including 2 entities, in source file mux_64x32to1.sv
-    Info (12023): Found entity 1: mux_64x32to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_64x32to1.sv Line: 14
-    Info (12023): Found entity 2: mux_64x32to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_64x32to1.sv Line: 40
+    Info (12023): Found entity 1: mux_64x32to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x32to1.sv Line: 14
+    Info (12023): Found entity 2: mux_64x32to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x32to1.sv Line: 40
 Info (12021): Found 2 design units, including 2 entities, in source file mux_32to1.sv
-    Info (12023): Found entity 1: mux_32to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_32to1.sv Line: 14
-    Info (12023): Found entity 2: mux_32to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_32to1.sv Line: 29
+    Info (12023): Found entity 1: mux_32to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_32to1.sv Line: 14
+    Info (12023): Found entity 2: mux_32to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_32to1.sv Line: 29
 Info (12021): Found 2 design units, including 2 entities, in source file mux_16to1.sv
-    Info (12023): Found entity 1: mux_16to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_16to1.sv Line: 14
-    Info (12023): Found entity 2: mux_16to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_16to1.sv Line: 29
+    Info (12023): Found entity 1: mux_16to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_16to1.sv Line: 14
+    Info (12023): Found entity 2: mux_16to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_16to1.sv Line: 29
 Info (12021): Found 2 design units, including 2 entities, in source file decoder_5to32.sv
-    Info (12023): Found entity 1: decoder_5to32 File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_5to32.sv Line: 14
-    Info (12023): Found entity 2: decoder_5to32_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_5to32.sv Line: 32
+    Info (12023): Found entity 1: decoder_5to32 File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_5to32.sv Line: 14
+    Info (12023): Found entity 2: decoder_5to32_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_5to32.sv Line: 32
 Info (12021): Found 2 design units, including 2 entities, in source file decoder_3to8.sv
-    Info (12023): Found entity 1: decoder_3to8 File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_3to8.sv Line: 13
-    Info (12023): Found entity 2: decoder_3to8_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_3to8.sv Line: 32
+    Info (12023): Found entity 1: decoder_3to8 File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_3to8.sv Line: 13
+    Info (12023): Found entity 2: decoder_3to8_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_3to8.sv Line: 32
 Info (12021): Found 2 design units, including 2 entities, in source file decoder_2to4.sv
-    Info (12023): Found entity 1: decoder_2to4 File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_2to4.sv Line: 13
-    Info (12023): Found entity 2: decoder_2to4_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/decoder_2to4.sv Line: 29
+    Info (12023): Found entity 1: decoder_2to4 File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_2to4.sv Line: 13
+    Info (12023): Found entity 2: decoder_2to4_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/decoder_2to4.sv Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file d_ff.sv
-    Info (12023): Found entity 1: D_FF File: C:/Users/Nguyen/Documents/EE 469/Lab4/D_FF.sv Line: 4
+    Info (12023): Found entity 1: D_FF File: C:/Users/Nguyen/Documents/EE-469/Lab4/D_FF.sv Line: 4
 Info (12021): Found 2 design units, including 2 entities, in source file mux_8to1.sv
-    Info (12023): Found entity 1: mux_8to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_8to1.sv Line: 14
-    Info (12023): Found entity 2: mux_8to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_8to1.sv Line: 29
+    Info (12023): Found entity 1: mux_8to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_8to1.sv Line: 14
+    Info (12023): Found entity 2: mux_8to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_8to1.sv Line: 29
 Info (12021): Found 2 design units, including 2 entities, in source file mux_2to1.sv
-    Info (12023): Found entity 1: mux_2to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_2to1.sv Line: 13
-    Info (12023): Found entity 2: mux_2to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_2to1.sv Line: 28
+    Info (12023): Found entity 1: mux_2to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_2to1.sv Line: 13
+    Info (12023): Found entity 2: mux_2to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_2to1.sv Line: 28
 Info (12021): Found 2 design units, including 2 entities, in source file mux_4to1.sv
-    Info (12023): Found entity 1: mux_4to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_4to1.sv Line: 14
-    Info (12023): Found entity 2: mux_4to1_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_4to1.sv Line: 29
+    Info (12023): Found entity 1: mux_4to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_4to1.sv Line: 14
+    Info (12023): Found entity 2: mux_4to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_4to1.sv Line: 29
 Info (12021): Found 2 design units, including 2 entities, in source file alu1bit.sv
-    Info (12023): Found entity 1: alu1bit File: C:/Users/Nguyen/Documents/EE 469/Lab4/alu1bit.sv Line: 23
-    Info (12023): Found entity 2: alu1bit_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/alu1bit.sv Line: 59
+    Info (12023): Found entity 1: alu1bit File: C:/Users/Nguyen/Documents/EE-469/Lab4/alu1bit.sv Line: 23
+    Info (12023): Found entity 2: alu1bit_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/alu1bit.sv Line: 59
 Info (12021): Found 2 design units, including 2 entities, in source file fulladder.sv
-    Info (12023): Found entity 1: fulladder File: C:/Users/Nguyen/Documents/EE 469/Lab4/fulladder.sv Line: 15
-    Info (12023): Found entity 2: fulladder_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/fulladder.sv Line: 32
+    Info (12023): Found entity 1: fulladder File: C:/Users/Nguyen/Documents/EE-469/Lab4/fulladder.sv Line: 15
+    Info (12023): Found entity 2: fulladder_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/fulladder.sv Line: 32
 Info (12021): Found 3 design units, including 3 entities, in source file alu.sv
-    Info (12023): Found entity 1: alu File: C:/Users/Nguyen/Documents/EE 469/Lab4/alu.sv Line: 25
-    Info (12023): Found entity 2: alu_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/alu.sv Line: 60
-    Info (12023): Found entity 3: alustim File: C:/Users/Nguyen/Documents/EE 469/Lab4/alu.sv Line: 117
+    Info (12023): Found entity 1: alu File: C:/Users/Nguyen/Documents/EE-469/Lab4/alu.sv Line: 25
+    Info (12023): Found entity 2: alu_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/alu.sv Line: 60
+    Info (12023): Found entity 3: alustim File: C:/Users/Nguyen/Documents/EE-469/Lab4/alu.sv Line: 117
 Info (12021): Found 2 design units, including 2 entities, in source file norgate_64input.sv
-    Info (12023): Found entity 1: norGate_64input File: C:/Users/Nguyen/Documents/EE 469/Lab4/norGate_64input.sv Line: 11
-    Info (12023): Found entity 2: norGate_64input_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/norGate_64input.sv Line: 37
+    Info (12023): Found entity 1: norGate_64input File: C:/Users/Nguyen/Documents/EE-469/Lab4/norGate_64input.sv Line: 11
+    Info (12023): Found entity 2: norGate_64input_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/norGate_64input.sv Line: 37
 Info (12021): Found 2 design units, including 2 entities, in source file signextend.sv
-    Info (12023): Found entity 1: signExtend File: C:/Users/Nguyen/Documents/EE 469/Lab4/signExtend.sv Line: 2
-    Info (12023): Found entity 2: signExtend_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/signExtend.sv Line: 8
+    Info (12023): Found entity 1: signExtend File: C:/Users/Nguyen/Documents/EE-469/Lab4/signExtend.sv Line: 2
+    Info (12023): Found entity 2: signExtend_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/signExtend.sv Line: 8
 Info (12021): Found 2 design units, including 2 entities, in source file instructfetch.sv
-    Info (12023): Found entity 1: instructFetch File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructFetch.sv Line: 12
-    Info (12023): Found entity 2: instructFetch_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructFetch.sv Line: 59
+    Info (12023): Found entity 1: instructFetch File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 12
+    Info (12023): Found entity 2: instructFetch_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 59
 Info (12021): Found 2 design units, including 2 entities, in source file addressadder.sv
-    Info (12023): Found entity 1: addressAdder File: C:/Users/Nguyen/Documents/EE 469/Lab4/addressAdder.sv Line: 2
-    Info (12023): Found entity 2: addressAdder_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/addressAdder.sv Line: 17
+    Info (12023): Found entity 1: addressAdder File: C:/Users/Nguyen/Documents/EE-469/Lab4/addressAdder.sv Line: 2
+    Info (12023): Found entity 2: addressAdder_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/addressAdder.sv Line: 17
 Info (12021): Found 1 design units, including 1 entities, in source file pc.sv
-    Info (12023): Found entity 1: PC File: C:/Users/Nguyen/Documents/EE 469/Lab4/PC.sv Line: 3
+    Info (12023): Found entity 1: PC File: C:/Users/Nguyen/Documents/EE-469/Lab4/PC.sv Line: 3
 Info (12021): Found 2 design units, including 2 entities, in source file controlsignals.sv
-    Info (12023): Found entity 1: controlSignals File: C:/Users/Nguyen/Documents/EE 469/Lab4/controlSignals.sv Line: 12
-    Info (12023): Found entity 2: controlSignals_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/controlSignals.sv Line: 239
+    Info (12023): Found entity 1: controlSignals File: C:/Users/Nguyen/Documents/EE-469/Lab4/controlSignals.sv Line: 12
+    Info (12023): Found entity 2: controlSignals_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/controlSignals.sv Line: 239
 Info (12021): Found 1 design units, including 1 entities, in source file mux_64x2to1.sv
-    Info (12023): Found entity 1: mux_64x2to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_64x2to1.sv Line: 1
+    Info (12023): Found entity 1: mux_64x2to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x2to1.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux_5x2to1.sv
-    Info (12023): Found entity 1: mux_5x2to1 File: C:/Users/Nguyen/Documents/EE 469/Lab4/mux_5x2to1.sv Line: 1
+    Info (12023): Found entity 1: mux_5x2to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_5x2to1.sv Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file zeroextend.sv
-    Info (12023): Found entity 1: zeroExtend File: C:/Users/Nguyen/Documents/EE 469/Lab4/zeroExtend.sv Line: 2
-    Info (12023): Found entity 2: zeroExtend_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/zeroExtend.sv Line: 14
+    Info (12023): Found entity 1: zeroExtend File: C:/Users/Nguyen/Documents/EE-469/Lab4/zeroExtend.sv Line: 2
+    Info (12023): Found entity 2: zeroExtend_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/zeroExtend.sv Line: 14
 Info (12021): Found 1 design units, including 1 entities, in source file flagregister.sv
-    Info (12023): Found entity 1: flagRegister File: C:/Users/Nguyen/Documents/EE 469/Lab4/flagRegister.sv Line: 1
+    Info (12023): Found entity 1: flagRegister File: C:/Users/Nguyen/Documents/EE-469/Lab4/flagRegister.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file register_32.sv
-    Info (12023): Found entity 1: register_32 File: C:/Users/Nguyen/Documents/EE 469/Lab4/register_32.sv Line: 10
+    Info (12023): Found entity 1: register_32 File: C:/Users/Nguyen/Documents/EE-469/Lab4/register_32.sv Line: 10
 Info (12021): Found 2 design units, including 2 entities, in source file ifid_register.sv
-    Info (12023): Found entity 1: IFID_register File: C:/Users/Nguyen/Documents/EE 469/Lab4/IFID_register.sv Line: 11
-    Info (12023): Found entity 2: IFID_register_testbench File: C:/Users/Nguyen/Documents/EE 469/Lab4/IFID_register.sv Line: 23
+    Info (12023): Found entity 1: IFID_register File: C:/Users/Nguyen/Documents/EE-469/Lab4/IFID_register.sv Line: 13
+    Info (12023): Found entity 2: IFID_register_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/IFID_register.sv Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file instructdecode.sv
+    Info (12023): Found entity 1: instructDecode File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 1
 Info (12127): Elaborating entity "instructFetch" for the top level hierarchy
-Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructFetch.sv Line: 18
-Warning (10175): Verilog HDL warning at instructmem.sv(24): ignoring unsupported system task File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructmem.sv Line: 24
-Error (10170): Verilog HDL syntax error at test04_LdurStur.arm(42) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/Users/Nguyen/Documents/EE 469/Lab4/benchmarks/test04_LdurStur.arm Line: 42
-Info (10648): Verilog HDL Display System Task info at instructmem.sv(43): Running benchmark:  File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructmem.sv Line: 43
-Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE 469/Lab4/instructFetch.sv Line: 18
-Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE 469/Lab4/output_files/DE1_SoC.map.smsg
+Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 18
+Warning (10175): Verilog HDL warning at instructmem.sv(24): ignoring unsupported system task File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 24
+Error (10170): Verilog HDL syntax error at test04_LdurStur.arm(42) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/Users/Nguyen/Documents/EE-469/Lab4/benchmarks/test04_LdurStur.arm Line: 42
+Info (10648): Verilog HDL Display System Task info at instructmem.sv(43): Running benchmark:  File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 43
+Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 18
+Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg
 Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 657 megabytes
-    Error: Processing ended: Thu Feb 22 18:25:42 2018
+    Error: Peak virtual memory: 659 megabytes
+    Error: Processing ended: Fri Feb 23 18:02:19 2018
     Error: Elapsed time: 00:00:12
     Error: Total CPU time (on all processors): 00:00:22
 
@@ -269,6 +271,6 @@ Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 1 warnin
 +--------------------------------------------+
 ; Analysis & Elaboration Suppressed Messages ;
 +--------------------------------------------+
-The suppressed messages can be found in C:/Users/Nguyen/Documents/EE 469/Lab4/output_files/DE1_SoC.map.smsg.
+The suppressed messages can be found in C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg.
 
 

@@ -1,1 +1,3 @@
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (10281): Verilog HDL Declaration information at instructDecode.sv(16): object "imm12" differs only in case from object "Imm12" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 16
+Info (10281): Verilog HDL Declaration information at instructDecode.sv(19): object "dAddr9" differs only in case from object "DAddr9" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 19
