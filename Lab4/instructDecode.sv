@@ -1,10 +1,11 @@
 `timescale 1ns/10ps
 module instructDecode(clk, reset, ID_instruction, IFID_Rn, IFID_Rm, IFID_Rd, RegA_content, RegB_content, WriteData_fromWB, RegWrite_fromMEMWB, Reg2Loc, Imm12Extended, DAddr9Extended
-							, UncondMuxOut, UncondBr);
+							, UncondMuxOut, UncondBr, MEMWB_Rd);
 	input logic clk, reset;
 	input logic [31:0] ID_instruction;
 	input logic [63:0] WriteData_fromWB;
 	input logic RegWrite_fromMEMWB, Reg2Loc, UncondBr;
+	input logic [4:0] MEMWB_Rd;
 	output logic [4:0] IFID_Rn, IFID_Rm, IFID_Rd;
 	output logic [63:0] RegA_content, RegB_content;
 	output logic [63:0] Imm12Extended;
@@ -39,7 +40,8 @@ mux_5x2to1 RegToLocMux (.A(IFID_Rd), .B(IFID_Rm), .sel(Reg2Loc), .out(Ab));
 // Da, Db go to ID/EX Pipe for next stage 
 // RegWrite received from MEM/WB pipe
 // WriteData received from WB stage
-regfile theRegisterFile (.ReadData1(RegA_content), .ReadData2(RegB_content), .WriteData(WriteData_fromWB), .ReadRegister1(IFID_Rn), .ReadRegister2(Ab), .RegWrite(RegWrite_fromMEMWB), .clk);
+regfile theRegisterFile (.ReadData1(RegA_content), .ReadData2(RegB_content), 
+.WriteData(WriteData_fromWB), .ReadRegister1(IFID_Rn), .ReadRegister2(Ab), .WriteRegister(MEMWB_Rd), .RegWrite(RegWrite_fromMEMWB), .clk);
 
 
 	//Zero extend for Imm12
@@ -75,9 +77,10 @@ module instructDecode_testbench();
 	logic [63:0] Imm12Extended;
 	logic [63:0] DAddr9Extended;
 	logic [63:0] UncondMuxOut;
+	logic [4:0] MEMWB_Rd;
 	
 instructDecode dut(.clk, .reset, .ID_instruction, .IFID_Rn, .IFID_Rm, .IFID_Rd, .RegA_content, .RegB_content, .WriteData_fromWB, .RegWrite_fromMEMWB, .Reg2Loc, .Imm12Extended, .DAddr9Extended
-							, .UncondMuxOut, .UncondBr);
+							, .UncondMuxOut, .UncondBr, .MEMWB_Rd);
 							
 parameter CLOCK_PERIOD= 10000;
 	initial begin

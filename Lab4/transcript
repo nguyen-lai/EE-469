@@ -1,292 +1,41 @@
 # Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
-do runmux64x4.do
+do runIDEX.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:47:31 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_64x4to1.sv 
-# -- Compiling module mux_64x4to1
-# ** Error: (vlog-13069) ./mux_64x4to1.sv(9): near ",": syntax error, unexpected ',', expecting ')'.
-# -- Compiling module mux_64x4to1_testbench
-# End time: 19:47:31 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# ** Error: C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
-# Error in macro ./runmux64x4.do line 7
-# C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
+# Start time: 12:58:42 on Feb 25,2018
+# vlog -reportprogress 300 ./IDEXreg.sv 
+# -- Compiling module IDEXreg
+# -- Compiling module IDEXreg_testbench
+# 
+# Top level modules:
+# 	IDEXreg_testbench
+# End time: 12:58:42 on Feb 25,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:58:42 on Feb 25,2018
+# vlog -reportprogress 300 ./parameterized_register.sv 
+# -- Compiling module parameterized_register
+# 
+# Top level modules:
+# 	parameterized_register
+# End time: 12:58:42 on Feb 25,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work IDEXreg_testbench 
+# Start time: 12:58:42 on Feb 25,2018
+# Loading sv_std.std
+# Loading work.IDEXreg_testbench
+# Loading work.IDEXreg
+# Loading work.parameterized_register
+# Loading work.mux_2to1
+# Loading work.D_FF
+# ** Warning: (vsim-3015) ./IDEXreg.sv(123): [PCDPC] - Port size (3) does not match connection size (1) for port 'd'. The port definition is at: ./parameterized_register.sv(12).
+#    Time: 0 ps  Iteration: 0  Instance: /IDEXreg_testbench/dut/ALUOPReg File: ./parameterized_register.sv
+# ** Warning: (vsim-3015) ./IDEXreg.sv(123): [PCDPC] - Port size (3) does not match connection size (1) for port 'q'. The port definition is at: ./parameterized_register.sv(12).
+#    Time: 0 ps  Iteration: 0  Instance: /IDEXreg_testbench/dut/ALUOPReg File: ./parameterized_register.sv
+# ** Error: Cannot open macro file: IDEX.do
+# Error in macro ./runIDEX.do line 19
+# Cannot open macro file: IDEX.do
 #     while executing
-# "vlog "./mux_64x4to1.sv""
-do runmux64x4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:47:57 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_64x4to1.sv 
-# -- Compiling module mux_64x4to1
-# -- Compiling module mux_64x4to1_testbench
-# 
-# Top level modules:
-# 	mux_64x4to1_testbench
-# End time: 19:47:57 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:47:57 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_4to1.sv 
-# -- Compiling module mux_4to1
-# -- Compiling module mux_4to1_testbench
-# 
-# Top level modules:
-# 	mux_4to1_testbench
-# End time: 19:47:57 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -voptargs=""+acc"" -t 1ps -lib work mux_64x4to1_testbench 
-# Start time: 19:47:57 on Feb 24,2018
-# Loading sv_std.std
-# Loading work.mux_64x4to1_testbench
-# Loading work.mux_64x4to1
-# Loading work.mux_4to1
-# ** Error (suppressible): (vsim-3009) [TSCALE] - Module 'mux_64x4to1_testbench' does not have a timeunit/timeprecision specification in effect, but other modules do.
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[0]/theMuxes File: ./mux_4to1.sv
-# Loading work.mux_2to1
-# Error loading design
-# Error: Error loading design
-#        Pausing macro execution
-# MACRO ./runmux64x4.do PAUSED at line 14
-do runmux64x4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:48:09 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_64x4to1.sv 
-# -- Compiling module mux_64x4to1
-# -- Compiling module mux_64x4to1_testbench
-# 
-# Top level modules:
-# 	mux_64x4to1_testbench
-# End time: 19:48:09 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:48:09 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_4to1.sv 
-# -- Compiling module mux_4to1
-# -- Compiling module mux_4to1_testbench
-# 
-# Top level modules:
-# 	mux_4to1_testbench
-# End time: 19:48:09 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -voptargs=""+acc"" -t 1ps -lib work mux_64x4to1_testbench 
-# Start time: 19:47:57 on Feb 24,2018
-# Loading sv_std.std
-# Loading work.mux_64x4to1_testbench
-# Loading work.mux_64x4to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[0]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[1]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[2]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[3]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[4]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[5]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[6]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[7]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[8]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[9]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[10]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[11]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[12]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[13]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[14]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[15]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[16]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[17]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[18]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[19]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[20]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[21]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[22]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[23]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[24]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[25]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[26]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[27]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[28]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[29]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[30]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[31]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[32]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[33]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[34]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[35]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[36]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[37]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[38]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[39]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[40]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[41]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[42]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[43]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[44]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[45]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[46]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[47]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[48]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[49]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[50]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[51]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[52]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[53]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[54]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[55]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[56]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[57]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[58]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[59]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[60]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[61]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[62]/theMuxes File: ./mux_4to1.sv
-# ** Warning: (vsim-3015) ./mux_64x4to1.sv(10): [PCDPC] - Port size (2) does not match connection size (1) for port 'select'. The port definition is at: ./mux_4to1.sv(14).
-#    Time: 0 ps  Iteration: 0  Instance: /mux_64x4to1_testbench/dut/eachMux[63]/theMuxes File: ./mux_4to1.sv
-# ** Error: Cannot open macro file: mux64x4.do
-# Error in macro ./runmux64x4.do line 19
-# Cannot open macro file: mux64x4.do
-#     while executing
-# "do mux64x4.do"
-do runmux64x4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:48:36 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_64x4to1.sv 
-# -- Compiling module mux_64x4to1
-# -- Compiling module mux_64x4to1_testbench
-# 
-# Top level modules:
-# 	mux_64x4to1_testbench
-# End time: 19:48:36 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:48:36 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_4to1.sv 
-# -- Compiling module mux_4to1
-# -- Compiling module mux_4to1_testbench
-# 
-# Top level modules:
-# 	mux_4to1_testbench
-# End time: 19:48:36 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 19:48:37 on Feb 24,2018, Elapsed time: 0:00:40
-# Errors: 4, Warnings: 64
-# vsim -voptargs=""+acc"" -t 1ps -lib work mux_64x4to1_testbench 
-# Start time: 19:48:37 on Feb 24,2018
-# Loading sv_std.std
-# Loading work.mux_64x4to1_testbench
-# Loading work.mux_64x4to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# ** Error: Cannot open macro file: mux64x4.do
-# Error in macro ./runmux64x4.do line 19
-# Cannot open macro file: mux64x4.do
-#     while executing
-# "do mux64x4.do"
-add wave -position end  sim:/mux_64x4to1_testbench/A
-add wave -position end  sim:/mux_64x4to1_testbench/B
-add wave -position end  sim:/mux_64x4to1_testbench/C
-add wave -position end  sim:/mux_64x4to1_testbench/D
-add wave -position end  sim:/mux_64x4to1_testbench/sel
-add wave -position end  sim:/mux_64x4to1_testbench/out
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Nguyen/Documents/EE-469/Lab4/mux64x4.do
-do runmux64x4.do
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:49:06 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_64x4to1.sv 
-# -- Compiling module mux_64x4to1
-# -- Compiling module mux_64x4to1_testbench
-# 
-# Top level modules:
-# 	mux_64x4to1_testbench
-# End time: 19:49:06 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:49:06 on Feb 24,2018
-# vlog -reportprogress 300 ./mux_4to1.sv 
-# -- Compiling module mux_4to1
-# -- Compiling module mux_4to1_testbench
-# 
-# Top level modules:
-# 	mux_4to1_testbench
-# End time: 19:49:06 on Feb 24,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 19:49:07 on Feb 24,2018, Elapsed time: 0:00:30
-# Errors: 3, Warnings: 0
-# vsim -voptargs=""+acc"" -t 1ps -lib work mux_64x4to1_testbench 
-# Start time: 19:49:07 on Feb 24,2018
-# Loading sv_std.std
-# Loading work.mux_64x4to1_testbench
-# Loading work.mux_64x4to1
-# Loading work.mux_4to1
-# Loading work.mux_2to1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# End time: 19:49:39 on Feb 24,2018, Elapsed time: 0:00:32
-# Errors: 0, Warnings: 0
+# "do IDEX.do"
+# End time: 13:58:36 on Feb 25,2018, Elapsed time: 0:59:54
+# Errors: 3, Warnings: 2
