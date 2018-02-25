@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Sat Feb 24 19:06:35 2018
+Sat Feb 24 20:08:35 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Sat Feb 24 19:06:35 2018           ;
+; Analysis & Elaboration Status ; Failed - Sat Feb 24 20:08:35 2018           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; instructFetch                               ;
@@ -162,7 +162,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sat Feb 24 19:06:23 2018
+    Info: Processing started: Sat Feb 24 20:08:24 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 4 design units, including 4 entities, in source file math.sv
@@ -253,8 +253,13 @@ Info (12021): Found 2 design units, including 2 entities, in source file ifid_re
     Info (12023): Found entity 1: IFID_register File: C:/Users/Nguyen/Documents/EE-469/Lab4/IFID_register.sv Line: 13
     Info (12023): Found entity 2: IFID_register_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/IFID_register.sv Line: 25
 Info (12021): Found 2 design units, including 2 entities, in source file instructdecode.sv
-    Info (12023): Found entity 1: instructDecode File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 1
-    Info (12023): Found entity 2: instructDecode_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 67
+    Info (12023): Found entity 1: instructDecode File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 2
+    Info (12023): Found entity 2: instructDecode_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 68
+Info (12021): Found 1 design units, including 1 entities, in source file exec.sv
+    Info (12023): Found entity 1: exec File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file mux_64x4to1.sv
+    Info (12023): Found entity 1: mux_64x4to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x4to1.sv Line: 2
+    Info (12023): Found entity 2: mux_64x4to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x4to1.sv Line: 16
 Info (12127): Elaborating entity "instructFetch" for the top level hierarchy
 Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Warning (10175): Verilog HDL warning at instructmem.sv(24): ignoring unsupported system task File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 24
@@ -264,9 +269,9 @@ Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: 
 Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg
 Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 1 warning
     Error: Peak virtual memory: 659 megabytes
-    Error: Processing ended: Sat Feb 24 19:06:35 2018
-    Error: Elapsed time: 00:00:12
-    Error: Total CPU time (on all processors): 00:00:22
+    Error: Processing ended: Sat Feb 24 20:08:35 2018
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:23
 
 
 +--------------------------------------------+

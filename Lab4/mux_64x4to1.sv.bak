@@ -1,0 +1,13 @@
+module mux_64x4to1(A, B, C, D, sel, out);
+	input logic [63:0] A, B, C, D;
+	input logic [1:0] sel;
+	output logic [63:0] out;
+	
+	genvar i;
+	generate 
+		for (i = 0; i < 64; i++) begin: eachMux
+			mux_4to1 theMuxes (.select(ALUSrc), .in(D[i], C[i], B[i], A[i]}), .out(out[i]));
+		end
+	endgenerate
+
+endmodule

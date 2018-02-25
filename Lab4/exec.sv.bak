@@ -1,0 +1,15 @@
+`timescale 1ns/10ps
+module exec(clk, reset, Da, Db, WB_MemToRegOut, EXMEM_ALUResult, ForwardA, ForwardB, ALUSrc, ALUOp, IDEX_PC, IDEX_UncondBrMuxOut, overflowFlag, negativeFlag, carryoutFlag, zeroFlag
+				, PCplusBranch, ALUResult_out);
+				
+input logic clk, reset;
+input logic [63:0] Da, Db;
+input logic [63:0] WB_MemToRegOut;
+input logic [63:0] EXMEM_ALUResult;
+input logic FordwardA, ForwardB;
+input logic [1:0] ALUSrc;
+input logic [2:0] ALUOp;
+input logic [63:0] IDEX_PC;
+input logic [63:0] IDEX_UncondBrMuxOut;
+output logic overflowFlag, negativeFlag, carryoutFlag, zeroFlag;
+output logic [63:0] PCplusBranch, ALUResult_out;

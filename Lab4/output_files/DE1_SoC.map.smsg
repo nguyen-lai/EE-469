@@ -1,3 +1,6 @@
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (10281): Verilog HDL Declaration information at instructDecode.sv(19): object "imm12" differs only in case from object "Imm12" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 19
-Info (10281): Verilog HDL Declaration information at instructDecode.sv(22): object "dAddr9" differs only in case from object "DAddr9" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 22
+Info (10281): Verilog HDL Declaration information at instructDecode.sv(20): object "imm12" differs only in case from object "Imm12" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 20
+Info (10281): Verilog HDL Declaration information at instructDecode.sv(23): object "dAddr9" differs only in case from object "DAddr9" in the same scope File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 23
+Warning (10273): Verilog HDL warning at exec.sv(19): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 19
+Warning (10273): Verilog HDL warning at exec.sv(23): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 23
+Warning (10273): Verilog HDL warning at exec.sv(30): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 30
