@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Fri Feb 23 18:02:19 2018
+Sat Feb 24 17:35:06 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Fri Feb 23 18:02:19 2018           ;
+; Analysis & Elaboration Status ; Failed - Sat Feb 24 17:35:06 2018           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; instructFetch                               ;
@@ -162,7 +162,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Feb 23 18:02:07 2018
+    Info: Processing started: Sat Feb 24 17:34:54 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 4 design units, including 4 entities, in source file math.sv
@@ -255,17 +255,17 @@ Info (12021): Found 2 design units, including 2 entities, in source file ifid_re
 Info (12021): Found 1 design units, including 1 entities, in source file instructdecode.sv
     Info (12023): Found entity 1: instructDecode File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 1
 Info (12127): Elaborating entity "instructFetch" for the top level hierarchy
-Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 18
+Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Warning (10175): Verilog HDL warning at instructmem.sv(24): ignoring unsupported system task File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 24
 Error (10170): Verilog HDL syntax error at test04_LdurStur.arm(42) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/Users/Nguyen/Documents/EE-469/Lab4/benchmarks/test04_LdurStur.arm Line: 42
 Info (10648): Verilog HDL Display System Task info at instructmem.sv(43): Running benchmark:  File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 43
-Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 18
+Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg
 Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 1 warning
     Error: Peak virtual memory: 659 megabytes
-    Error: Processing ended: Fri Feb 23 18:02:19 2018
+    Error: Processing ended: Sat Feb 24 17:35:06 2018
     Error: Elapsed time: 00:00:12
-    Error: Total CPU time (on all processors): 00:00:22
+    Error: Total CPU time (on all processors): 00:00:23
 
 
 +--------------------------------------------+
