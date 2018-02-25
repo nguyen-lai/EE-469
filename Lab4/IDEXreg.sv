@@ -142,11 +142,11 @@ endmodule
 module IDEXreg_testbench(); 
 
 	logic clk, reset, ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
-	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK, ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
-	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK;
+	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK, EX_Reg2Loc, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_UncondBr, EX_BrTaken,
+	EX_read_enable, EX_NOOP, EX_LDURB, EX_MOVZnotMOVK;
 	
 	logic [1:0] ID_ALUSRC, EX_ALUSRC; 
-	logic [2:0] ID_ALUOP, EX_ALUOP;
+	logic [2:0] ID_ALUOp, EX_ALUOp;
 	logic[3:0] ID_xfer_size, EX_xfer_size;
 	logic[4:0] EX_Rn, EX_Rm, EX_Rd, IFID_Rn, IFID_Rm, IFID_Rd;
 	logic[31:0] EX_instruction, ID_instruction;
