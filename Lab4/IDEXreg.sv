@@ -5,6 +5,8 @@
 //
 //ID/EX pipe register. Stores instruction  
 	
+	
+`timescale 1ns/10ps
 
 module IDEXreg(
 	clk, reset,
@@ -28,6 +30,12 @@ module IDEXreg(
 	//sign-extended imm outputs
 	EX_Imm12Extended, EX_DAddr9Extended,
 	
+	//shift amount output
+	EX_shamt,
+	
+	//shift/mult result mux control signal
+	EX_ALUResult,
+	
 	
 	//control signal inputs
 	ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
@@ -47,7 +55,14 @@ module IDEXreg(
 	IFID_Rn, IFID_Rm, IFID_Rd,
 	
 	//Sign-extended imm inputs
-	ID_Imm12Extended, ID_DAddr9Extended
+	ID_Imm12Extended, ID_DAddr9Extended,
+	
+	//shift amount input
+	ID_shamt,
+	
+	//shift/mult result mux control signal
+	ID_ALUResult,
+	
 	
 
 ); 
@@ -76,6 +91,9 @@ module IDEXreg(
 	//sign-extended Imm inputs 
 	output logic [63:0] EX_Imm12Extended, EX_DAddr9Extended;
 	
+	output logic [5:0] EX_shamt;
+	output logic [1:0] EX_ALUResult;
+	
 //----------------------------------------------------------------------------------------	
 
 	
@@ -102,6 +120,13 @@ module IDEXreg(
 	
 	//sign-extended Imm inputs 
 	input logic [63:0] ID_Imm12Extended, ID_DAddr9Extended;
+	
+	//shamt input and ALU result control signal
+	input logic [5:0] ID_shamt;
+	input logic [1:0] ID_ALUResult;
+	
+	
+	
 //--------------------------------------------------
  
 	input logic clk, reset;
@@ -120,7 +145,7 @@ module IDEXreg(
 	 parameterized_register #(.SIZE(1)) MOVZnotMOVKReg(.d(ID_MOVZnotMOVK), .q(EX_MOVZnotMOVK), .en(1'b1), .reset, .clk);
 	 
 	 parameterized_register #(.SIZE(2)) ALUSRCReg(.d(ID_ALUSRC), .q(EX_ALUSRC), .en(1'b1), .reset, .clk);
-	 parameterized_register #(.SIZE(3)) ALUOPReg(.d(ID_ALUOP), .q(EX_ALUOP), .en(1'b1), .reset, .clk);
+	 parameterized_register #(.SIZE(3)) ALUOPReg(.d(ID_ALUOp), .q(EX_ALUOp), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(4)) xfer_sizeReg(.d(ID_xfer_size), .q(EX_xfer_size), .en(1'b1), .reset, .clk);
 	 
 	 parameterized_register #(.SIZE(64)) PCReg(.d(ID_PC), .q(EX_PC), .en(1'b1), .reset, .clk);
@@ -136,6 +161,13 @@ module IDEXreg(
 	 
 	 parameterized_register #(.SIZE(64)) Imm12Reg(.d(ID_Imm12Extended), .q(EX_Imm12Extended), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(64)) DAddr9Reg(.d(ID_DAddr9Extended), .q(EX_DAddr9Extended), .en(1'b1), .reset, .clk);
+	 
+	 parameterized_register #(.SIZE(6)) shamtReg(.d(ID_shamt), .q(EX_shamt), .en(1'b1), .reset, .clk);
+	 parameterized_register #(.SIZE(2)) ALUResultReg(.d(ID_ALUResult), .q(EX_ALUResult), .en(1'b1), .reset, .clk);
+	 
+	 
+	 
+	 
 endmodule
 
 
@@ -145,10 +177,11 @@ module IDEXreg_testbench();
 	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK, EX_Reg2Loc, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_UncondBr, EX_BrTaken,
 	EX_read_enable, EX_NOOP, EX_LDURB, EX_MOVZnotMOVK;
 	
-	logic [1:0] ID_ALUSRC, EX_ALUSRC; 
+	logic [1:0] ID_ALUSRC, EX_ALUSRC, ID_ALUResult, EX_ALUResult;
 	logic [2:0] ID_ALUOp, EX_ALUOp;
 	logic[3:0] ID_xfer_size, EX_xfer_size;
 	logic[4:0] EX_Rn, EX_Rm, EX_Rd, IFID_Rn, IFID_Rm, IFID_Rd;
+	logic [5:0] ID_shamt, EX_shamt;
 	logic[31:0] EX_instruction, ID_instruction;
 	
 	logic[63:0] ID_PC, ID_RegA_content, ID_RegB_content, ID_Imm12Extended, ID_DAddr9Extended;
@@ -177,6 +210,12 @@ module IDEXreg_testbench();
 	//sign-extended imm outputs
 	.EX_Imm12Extended, .EX_DAddr9Extended,
 	
+	//shift amount output
+	.EX_shamt,
+	
+	//shift/mult result mux control signal
+	.EX_ALUResult,
+	
 	
 	//control signal inputs.
 	.ID_Reg2Loc, .ID_RegWrite, .ID_MemWrite, .ID_MemToReg, .ID_UncondBr, .ID_BrTaken,
@@ -196,8 +235,73 @@ module IDEXreg_testbench();
 	.IFID_Rn, .IFID_Rm, .IFID_Rd,
 	
 	//Sign-extended imm inputs
-	.ID_Imm12Extended, .ID_DAddr9Extended
+	.ID_Imm12Extended, .ID_DAddr9Extended,
+	
+		//shamt input and ALU result control signal
+	.ID_shamt, .ID_ALUResult
+	
 	);
+	
+	//set up the clk
+	initial begin
+		parameter PERIOD = 100;
+		clk <= 0;
+		forever #(PERIOD/2) clk = ~clk;
+	end
+	
+	
+	initial begin
+	
+		reset <= 1;
+		
+		ID_Reg2Loc <= 1;
+		ID_RegWrite <= 1;
+		ID_MemWrite <= 1;
+		ID_MemToReg <= 1;
+		ID_UncondBr <= 1;
+		ID_BrTaken <= 1;
+		ID_read_enable <= 1;
+		ID_NOOP <= 1;
+		ID_LDURB <= 1;
+		ID_MOVZnotMOVK <= 1;
+		
+		ID_ALUSRC <= 2'b10;
+		ID_ALUResult <= 2'b10; 
+		
+		
+		ID_ALUOp <= 3'b111;
+		
+		ID_xfer_size <= 4'b1111;
+	
+		IFID_Rn <= 5'b11111;
+		IFID_Rm <= 5'b11111;
+		IFID_Rd <= 5'b11111;
+		
+		ID_shamt <= 6'b111111;
+		
+		
+		ID_instruction <= 8'hFFFFFFFF;
+		
+		ID_PC <= 16'hFFFFFFFFFFFFFFFF;
+		ID_RegA_content <= 16'hFFFFFFFFFFFFFFFF;
+		ID_RegB_content <= 16'hFFFFFFFFFFFFFFFF;
+		ID_Imm12Extended <= 16'hFFFFFFFFFFFFFFFF;
+		ID_DAddr9Extended <= 16'hFFFFFFFFFFFFFFFF;
+		
+		@(posedge clk);
+		
+		reset <= 0; 
+		
+		@(posedge clk);
+		@(posedge clk);
+		
+		reset <= 1; 
+		@(posedge clk);
+		@(posedge clk);
+		
+		$stop;
+	
+	end
 	
 endmodule
 
