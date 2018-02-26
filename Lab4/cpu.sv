@@ -46,7 +46,7 @@ module cpu(clk, reset);
 	
 	logic [31:0] EX_instruction;
 	
-	logic [63:0] EX_PC, EX_RegA_content, EX_RegB_content, EX_Imm12Extended, EX_DAddr9Extended;
+	logic [63:0] EX_PC, EX_RegA_content, EX_RegB_content, EX_Imm12Extended, EX_DAddr9Extended, EX_UncondMuxOut;
 	//------------------------------------------------------------------------------------------------------------------
 	
 	
@@ -76,6 +76,7 @@ module cpu(clk, reset);
 	
 	//shift/mult result mux control signal
 	.EX_ALUResult,
+	.EX_UncondMuxOut,
 	
 	
 	//control signal inputs
@@ -102,20 +103,55 @@ module cpu(clk, reset);
 	.ID_shamt,
 	
 	//shift/mult result mux control signal
-	.ID_ALUResult
+	.ID_ALUResult,
+	.ID_UncondMuxOut
 	);
+	
+	
 	
 	
 	// EX STAGE
 	logic [63:0] WB_MemToRegOut, EXMEM_ALUResult;
 	logic [1:0] ForwardA, ForwardB;
 	logic EX_carryout;
-	logic [63:0] EX_IncrementedPC, EX_ALUResult_out;
-	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), .IDEX_UncondBrMuxOut, .IDEX_DAddr9(EX_DAddr9Extended)
-				, .IDEX_Imm12(EX_Imm12Extended), .overflowFlag(EX_overflow), negativeFlag(EX_negative), .carryoutFlag(EX_carryout), .zeroFlag(EX_zero)
+	logic [63:0] EX_IncrementedPC, EX_ALUResult_out;																																														//is this supposed to be the same as EX_UncondMuxOut??
+	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), .IDEX_UncondBrMuxOut(EX_UncondMuxOut), .IDEX_DAddr9(EX_DAddr9Extended)
+				, .IDEX_Imm12(EX_Imm12Extended), .overflowFlag(EX_overflow), .negativeFlag(EX_negative), .carryoutFlag(EX_carryout), .zeroFlag(EX_zero)
 				, .PCplusBranch(EX_IncrementedPC), .EX_ALUResult_out, .shiftDirection(EX_shiftDirection), .shamt(EX_shamt), .ALUResult(EX_ALUResult));
+				
 	
 	
+	
+	
+	//------------------EXMEMReg outputs---------------------------------------------------------
+	logic MEM_RegWrite, MEM_MemWrite, MEM_MemToReg, MEM_BrTaken,
+	MEM_read_enable, MEM_NOOP;
+	logic [3:0] MEM_xfer_size;
+	logic [4:0] MEM_Rn, MEM_Rm, MEM_Rd;
+	logic [63:0] MEM_ALUResult_out, MEM_IncrementedPC, MEM_RegB_content;
+	
+	//--------------------------------------------------------------------------------------------
+	
+	EXMEMReg theEXMEMReg(
+		//outputs
+		.MEM_RegWrite, .MEM_MemWrite, .MEM_MemToReg, .MEM_BrTaken,
+		.MEM_read_enable, .MEM_NOOP, .MEM_xfer_size,
+		
+		.MEM_Rn, .MEM_Rm, .MEM_Rd,
+		
+		.MEM_ALUResult_out, .MEM_IncrementedPC, .MEM_RegB_content,
+		
+		//inputs
+		.clk, .reset,
+		
+		.EX_RegWrite, .EX_MemWrite, .EX_MemToReg, .EX_BrTaken,
+		.EX_read_enable, .EX_NOOP, .EX_xfer_size,
+		
+		
+		.EX_Rn, .EX_Rm, .EX_Rd,
+		
+		.EX_ALUResult_out, EX_IncrementedPC, .EX_RegB_content
+	)
 	
 endmodule
 
