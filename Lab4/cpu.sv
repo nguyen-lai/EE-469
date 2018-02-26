@@ -3,10 +3,9 @@ module cpu(clk, reset);
 	input logic clk, reset;
 	
 	// Instruction Fetch Stage
-	logic [63:0] EXMEM_PCplusBranch, IF_PC;
+	logic [63:0] IF_PC;
 	logic [31:0] IF_instruction;
-	logic EXMEM_BrTaken;
-	instructFetch theIFStage (.instruction(IF_instruction), .currentPC(IF_PC), .BranchToAddress(EXMEM_PCplusBranch), .BrTaken(EXMEM_BrTaken), .clk, .reset);
+	instructFetch theIFStage (.instruction(IF_instruction), .currentPC(IF_PC), .BranchToAddress(MEM_IncrementedPC), .BrTaken(MEM_BrTaken), .clk, .reset);
 
 	// IF/ID Pipe
 	logic [63:0] ID_PC;
@@ -111,11 +110,11 @@ module cpu(clk, reset);
 	
 	
 	// EX STAGE
-	logic [63:0] WB_MemToRegOut, EXMEM_ALUResult;
+	logic [63:0] WB_MemToRegOut;
 	logic [1:0] ForwardA, ForwardB;
 	logic EX_carryout;
 	logic [63:0] EX_IncrementedPC, EX_ALUResult_out;																																														//is this supposed to be the same as EX_UncondMuxOut??
-	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), .IDEX_UncondBrMuxOut(EX_UncondMuxOut), .IDEX_DAddr9(EX_DAddr9Extended)
+	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult(MEM_ALUResult_out), .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), .IDEX_UncondBrMuxOut(EX_UncondMuxOut), .IDEX_DAddr9(EX_DAddr9Extended)
 				, .IDEX_Imm12(EX_Imm12Extended), .overflowFlag(EX_overflow), .negativeFlag(EX_negative), .carryoutFlag(EX_carryout), .zeroFlag(EX_zero)
 				, .PCplusBranch(EX_IncrementedPC), .EX_ALUResult_out, .shiftDirection(EX_shiftDirection), .shamt(EX_shamt), .ALUResult(EX_ALUResult));
 				
@@ -150,8 +149,14 @@ module cpu(clk, reset);
 		
 		.EX_Rn, .EX_Rm, .EX_Rd,
 		
-		.EX_ALUResult_out, EX_IncrementedPC, .EX_RegB_content
-	)
+		.EX_ALUResult_out, .EX_IncrementedPC, .EX_RegB_content
+	);
+	
+	
+	// MEM STAGE
+	logic [63:0] MEM_datafromMem;
+	 mem theMEMStage(.clk, .reset, .EXMEM_ALUResult(MEM_ALUResult_out), .EXMEM_RegB_content(MEM_RegB_content), .EXMEM_MemWrite(MEM_Write)
+			, .EXMEM_read_enable(MEM_read_enable), .EXMEM_xfer_size(MEM_xfer_size), .MEM_datafromMem);
 	
 endmodule
 

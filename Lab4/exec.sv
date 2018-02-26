@@ -6,7 +6,7 @@ input logic clk, reset;
 input logic [63:0] Da, Db;
 input logic [63:0] WB_MemToRegOut;
 input logic [63:0] EXMEM_ALUResult;
-input logic ForwardA, ForwardB;
+input logic [1:0] ForwardA, ForwardB;
 input logic [1:0] ALUSrc;
 input logic [2:0] ALUOp;
 input logic [63:0] IDEX_PC, IDEX_DAddr9, IDEX_Imm12;
