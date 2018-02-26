@@ -1,27 +1,21 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
+add wave -noupdate /IDEXreg_testbench/ID_shiftDirection
+add wave -noupdate /IDEXreg_testbench/EX_shiftDirection
 add wave -noupdate /IDEXreg_testbench/clk
 add wave -noupdate /IDEXreg_testbench/reset
-add wave -noupdate /IDEXreg_testbench/ID_Reg2Loc
 add wave -noupdate /IDEXreg_testbench/ID_RegWrite
 add wave -noupdate /IDEXreg_testbench/ID_MemWrite
 add wave -noupdate /IDEXreg_testbench/ID_MemToReg
-add wave -noupdate /IDEXreg_testbench/ID_UncondBr
 add wave -noupdate /IDEXreg_testbench/ID_BrTaken
 add wave -noupdate /IDEXreg_testbench/ID_read_enable
 add wave -noupdate /IDEXreg_testbench/ID_NOOP
-add wave -noupdate /IDEXreg_testbench/ID_LDURB
-add wave -noupdate /IDEXreg_testbench/ID_MOVZnotMOVK
-add wave -noupdate /IDEXreg_testbench/EX_Reg2Loc
 add wave -noupdate /IDEXreg_testbench/EX_RegWrite
 add wave -noupdate /IDEXreg_testbench/EX_MemWrite
 add wave -noupdate /IDEXreg_testbench/EX_MemToReg
-add wave -noupdate /IDEXreg_testbench/EX_UncondBr
 add wave -noupdate /IDEXreg_testbench/EX_BrTaken
 add wave -noupdate /IDEXreg_testbench/EX_read_enable
 add wave -noupdate /IDEXreg_testbench/EX_NOOP
-add wave -noupdate /IDEXreg_testbench/EX_LDURB
-add wave -noupdate /IDEXreg_testbench/EX_MOVZnotMOVK
 add wave -noupdate /IDEXreg_testbench/ID_ALUSRC
 add wave -noupdate /IDEXreg_testbench/EX_ALUSRC
 add wave -noupdate /IDEXreg_testbench/ID_ALUOp
@@ -63,4 +57,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1 ns}
+WaveRestoreZoom {449050 ps} {450050 ps}

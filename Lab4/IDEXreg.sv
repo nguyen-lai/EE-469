@@ -3,16 +3,19 @@
 //Winter 2018
 //CSE 469
 //
-//ID/EX pipe register. Stores instruction  
+//ID/EX pipe register. 
 	
 	
+	
+//removed Reg2Loc and UncondBr, added shiftDirection
+
 `timescale 1ns/10ps
 
 module IDEXreg(
 	clk, reset,
 	//control signal outputs
-	EX_Reg2Loc, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_UncondBr, EX_BrTaken,
-	EX_read_enable, EX_NOOP, EX_LDURB, EX_MOVZnotMOVK,
+	EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken,
+	EX_read_enable, EX_NOOP, EX_shiftDirection,  //EX_LDURB, EX_MOVZnotMOVK, shift direction = 1 bit, alu result = 2 bit
 	EX_ALUSRC, EX_ALUOp, EX_xfer_size,
 	
 	//PC address output
@@ -38,8 +41,8 @@ module IDEXreg(
 	
 	
 	//control signal inputs
-	ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
-	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK,
+	ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_BrTaken,
+	ID_read_enable, ID_NOOP, ID_shiftDirection, //ID_LDURB, ID_MOVZnotMOVK,---------------------------<------
 	ID_ALUSRC, ID_ALUOp, ID_xfer_size,
 	
 	//PC address input
@@ -70,8 +73,8 @@ module IDEXreg(
 //---------------------OUTPUTS-------------------------------------------------------------
 
 //control signal outputs
-	output logic EX_Reg2Loc, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_UncondBr, EX_BrTaken,
-	EX_read_enable, EX_NOOP, EX_LDURB, EX_MOVZnotMOVK;
+	output logic EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken,
+	EX_read_enable, EX_NOOP, EX_shiftDirection;
 	output logic [1:0] EX_ALUSRC;
 	output logic [2:0] EX_ALUOp;
 	output logic [3:0] EX_xfer_size;
@@ -100,8 +103,8 @@ module IDEXreg(
 //----------------------INPUTS------------------------------------------------------------
 	
 	//control signal inputs
-	input logic ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
-	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK;
+	input logic ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_BrTaken,
+	ID_read_enable, ID_NOOP, ID_shiftDirection;
 	input logic [1:0] ID_ALUSRC;
 	input logic [2:0] ID_ALUOp;
 	input logic [3:0] ID_xfer_size;
@@ -133,16 +136,17 @@ module IDEXreg(
 
 	
  //create a bunch of registers for all the outputs
-	 parameterized_register #(.SIZE(1)) Reg2LocReg(.d(ID_Reg2Loc), .q(EX_Reg2Loc), .en(1'b1), .reset, .clk);
+	// parameterized_register #(.SIZE(1)) Reg2LocReg(.d(ID_Reg2Loc), .q(EX_Reg2Loc), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) RegWriteReg(.d(ID_RegWrite), .q(EX_RegWrite), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) MemWriteReg(.d(ID_MemWrite), .q(EX_MemWrite), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) MemToRegReg(.d(ID_MemToReg), .q(EX_MemToReg), .en(1'b1), .reset, .clk);
-	 parameterized_register #(.SIZE(1)) UncondBrReg(.d(ID_UncondBr), .q(EX_UncondBr), .en(1'b1), .reset, .clk);
+	 //parameterized_register #(.SIZE(1)) UncondBrReg(.d(ID_UncondBr), .q(EX_UncondBr), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) BrTakenReg(.d(ID_BrTaken), .q(EX_BrTaken), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) read_enableReg(.d(ID_read_enable), .q(EX_read_enable), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(1)) NOOPReg(.d(ID_NOOP), .q(EX_NOOP), .en(1'b1), .reset, .clk);
-	 parameterized_register #(.SIZE(1)) LDURBReg(.d(ID_LDURB), .q(EX_LDURB), .en(1'b1), .reset, .clk);
-	 parameterized_register #(.SIZE(1)) MOVZnotMOVKReg(.d(ID_MOVZnotMOVK), .q(EX_MOVZnotMOVK), .en(1'b1), .reset, .clk);
+	 parameterized_register #(.SIZE(1)) shiftDirectionReg(.d(ID_shiftDirection), .q(EX_shiftDirection), .en(1'b1), .reset, .clk);
+	// parameterized_register #(.SIZE(1)) LDURBReg(.d(ID_LDURB), .q(EX_LDURB), .en(1'b1), .reset, .clk);
+	// parameterized_register #(.SIZE(1)) MOVZnotMOVKReg(.d(ID_MOVZnotMOVK), .q(EX_MOVZnotMOVK), .en(1'b1), .reset, .clk);
 	 
 	 parameterized_register #(.SIZE(2)) ALUSRCReg(.d(ID_ALUSRC), .q(EX_ALUSRC), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(3)) ALUOPReg(.d(ID_ALUOp), .q(EX_ALUOp), .en(1'b1), .reset, .clk);
@@ -166,16 +170,14 @@ module IDEXreg(
 	 parameterized_register #(.SIZE(2)) ALUResultReg(.d(ID_ALUResult), .q(EX_ALUResult), .en(1'b1), .reset, .clk);
 	 
 	 
-	 
-	 
 endmodule
 
 
 module IDEXreg_testbench(); 
 
-	logic clk, reset, ID_Reg2Loc, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_UncondBr, ID_BrTaken,
-	ID_read_enable, ID_NOOP, ID_LDURB, ID_MOVZnotMOVK, EX_Reg2Loc, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_UncondBr, EX_BrTaken,
-	EX_read_enable, EX_NOOP, EX_LDURB, EX_MOVZnotMOVK;
+	logic clk, reset, ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_BrTaken,
+	ID_read_enable, ID_NOOP, ID_shiftDirection, EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken,
+	EX_read_enable, EX_NOOP, EX_shiftDirection;
 	
 	logic [1:0] ID_ALUSRC, EX_ALUSRC, ID_ALUResult, EX_ALUResult;
 	logic [2:0] ID_ALUOp, EX_ALUOp;
@@ -191,8 +193,8 @@ module IDEXreg_testbench();
 
 	.clk, .reset,
 	//control signal outputs
-	.EX_Reg2Loc, .EX_RegWrite, .EX_MemWrite, .EX_MemToReg, .EX_UncondBr, .EX_BrTaken,
-	.EX_read_enable, .EX_NOOP, .EX_LDURB, .EX_MOVZnotMOVK,
+   .EX_RegWrite, .EX_MemWrite, .EX_MemToReg, .EX_BrTaken,
+	.EX_read_enable, .EX_NOOP, .EX_shiftDirection,
 	.EX_ALUSRC, .EX_ALUOp, .EX_xfer_size,
 	
 	//PC address output
@@ -218,8 +220,8 @@ module IDEXreg_testbench();
 	
 	
 	//control signal inputs.
-	.ID_Reg2Loc, .ID_RegWrite, .ID_MemWrite, .ID_MemToReg, .ID_UncondBr, .ID_BrTaken,
-	.ID_read_enable, .ID_NOOP, .ID_LDURB, .ID_MOVZnotMOVK,
+	.ID_RegWrite, .ID_MemWrite, .ID_MemToReg, .ID_BrTaken,
+	.ID_read_enable, .ID_NOOP, .ID_shiftDirection,
 	.ID_ALUSRC, .ID_ALUOp, .ID_xfer_size,
 	
 	//PC address input
@@ -254,16 +256,15 @@ module IDEXreg_testbench();
 	
 		reset <= 1;
 		
-		ID_Reg2Loc <= 1;
+		
 		ID_RegWrite <= 1;
 		ID_MemWrite <= 1;
 		ID_MemToReg <= 1;
-		ID_UncondBr <= 1;
+
 		ID_BrTaken <= 1;
 		ID_read_enable <= 1;
 		ID_NOOP <= 1;
-		ID_LDURB <= 1;
-		ID_MOVZnotMOVK <= 1;
+		ID_shiftDirection <= 1;
 		
 		ID_ALUSRC <= 2'b10;
 		ID_ALUResult <= 2'b10; 
