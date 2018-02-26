@@ -35,6 +35,76 @@ module cpu(clk, reset);
 	
 	
 	
+	//-----------------------------------IDEXreg outputs-----------------------------------------------------------------
+	logic EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken, EX_read_enable, EX_NOOP, EX_shiftDirection;
+	
+	logic [1:0] EX_ALUSRC, EX_ALUResult;
+	logic [2:0] EX_ALUOp;
+	logic [3:0] EX_xfer_size;
+	logic [4:0] EX_Rn, EX_Rm, EX_Rd;
+	logic [5:0] EX_shamt;
+	
+	logic [31:0] EX_instruction;
+	
+	logic [63:0] EX_PC, EX_RegA_content, EX_RegB_content, EX_Imm12Extended, EX_DAddr9Extended;
+	//------------------------------------------------------------------------------------------------------------------
+	
+	
+	IDEXreg theIDEXreg(.clk, .reset,
+	//control signal outputs
+	.EX_RegWrite, .EX_MemWrite, .EX_MemToReg, .EX_BrTaken,
+	.EX_read_enable, .EX_NOOP, .EX_shiftDirection,  //EX_LDURB, EX_MOVZnotMOVK, shift direction = 1 bit, alu result = 2 bit
+	.EX_ALUSRC, .EX_ALUOp, .EX_xfer_size,
+	
+	//PC address output
+	.EX_PC, 
+
+	//instruction output
+	.EX_instruction,
+
+	//Regfile read data outputs
+	.EX_RegA_content, .EX_RegB_content,
+	
+	//Rm, Rn, and Rd outputs
+	.EX_Rn, .EX_Rm, .EX_Rd,
+	
+	//sign-extended imm outputs
+	.EX_Imm12Extended, .EX_DAddr9Extended,
+	
+	//shift amount output
+	.EX_shamt,
+	
+	//shift/mult result mux control signal
+	.EX_ALUResult,
+	
+	
+	//control signal inputs
+	.ID_RegWrite, .ID_MemWrite, .ID_MemToReg, .ID_BrTaken,
+	.ID_read_enable, .ID_NOOP, .ID_shiftDirection, //ID_LDURB, ID_MOVZnotMOVK,---------------------------<------
+	.ID_ALUSRC(ID_ALUSrc), .ID_ALUOp, .ID_xfer_size,
+	
+	//PC address input
+	.ID_PC, 
+	
+	//instruction input
+	.ID_instruction,
+	
+	//REgfile read data inputs
+	.ID_RegA_content(RegA_content), .ID_RegB_content(RegB_content),
+	
+	//Rm, Rn, and Rd inputs
+	.IFID_Rn, .IFID_Rm, .IFID_Rd,
+	
+	//Sign-extended imm inputs
+	.ID_Imm12Extended, .ID_DAddr9Extended,
+	
+	//shift amount input
+	.ID_shamt,
+	
+	//shift/mult result mux control signal
+	.ID_ALUResult
+	);
+	
 endmodule
 
 module cpu_testbench();
