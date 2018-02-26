@@ -111,9 +111,11 @@ module cpu(clk, reset);
 	logic [1:0] ForwardA, ForwardB;
 	logic EX_carryout;
 	logic [63:0] EX_IncrementedPC, EX_ALUResult_out;
-	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), IDEX_UncondBrMuxOut, .IDEX_DAddr9(EX_DAddr9Extended)
+	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), .IDEX_UncondBrMuxOut, .IDEX_DAddr9(EX_DAddr9Extended)
 				, .IDEX_Imm12(EX_Imm12Extended), .overflowFlag(EX_overflow), negativeFlag(EX_negative), .carryoutFlag(EX_carryout), .zeroFlag(EX_zero)
 				, .PCplusBranch(EX_IncrementedPC), .EX_ALUResult_out, .shiftDirection(EX_shiftDirection), .shamt(EX_shamt), .ALUResult(EX_ALUResult));
+	
+	
 	
 endmodule
 

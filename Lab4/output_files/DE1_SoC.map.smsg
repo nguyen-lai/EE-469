@@ -5,11 +5,3 @@ Warning (10273): Verilog HDL warning at exec.sv(22): extended using "x" or "z" F
 Warning (10273): Verilog HDL warning at exec.sv(26): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 26
 Warning (10273): Verilog HDL warning at exec.sv(34): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 34
 Warning (10273): Verilog HDL warning at exec.sv(59): extended using "x" or "z" File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 59
-Warning (10030): Net "EXMEM_PCplusBranch" at cpu.sv(6) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 6
-Warning (10030): Net "WriteData_fromWB" at cpu.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 18
-Warning (10030): Net "MEMWB_Rd" at cpu.sv(22) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 22
-Warning (10030): Net "EXMEM_BrTaken" at cpu.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 8
-Warning (10030): Net "RegWrite_fromMEMWB" at cpu.sv(19) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 19
-Warning (10030): Net "EX_zero" at cpu.sv(31) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 31
-Warning (10030): Net "EX_negative" at cpu.sv(31) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 31
-Warning (10030): Net "EX_overflow" at cpu.sv(31) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 31
