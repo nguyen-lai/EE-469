@@ -17,12 +17,12 @@ module cpu(clk, reset);
 	logic [4:0] IFID_Rn, IFID_Rm, IFID_Rd;
 	logic [63:0] RegA_content, RegB_content, WriteData_fromWB;
 	logic RegWrite_fromMEMWB, Reg2Loc, UncondBr;
-	logic [63:0] Imm12Extended, DAddr9Extended;
+	logic [63:0] ID_Imm12Extended, ID_DAddr9Extended;
 	logic [63:0] UncondMuxOut;
 	logic [4:0] MEMWB_Rd;
-	logic [5:0] shamt;
-	instructDecode theIDStage(.clk, .reset, .ID_instruction, .IFID_Rn, .IFID_Rm, .IFID_Rd, .RegA_content, .RegB_content, .WriteData_fromWB, .RegWrite_fromMEMWB, .Reg2Loc, .Imm12Extended, .DAddr9Extended
-							, .UncondMuxOut, .UncondBr, .MEMWB_Rd, .shamt);
+	logic [5:0] ID_shamt;
+	instructDecode theIDStage(.clk, .reset, .ID_instruction, .IFID_Rn, .IFID_Rm, .IFID_Rd, .RegA_content, .RegB_content, .WriteData_fromWB, .RegWrite_fromMEMWB, .Reg2Loc, .Imm12Extended(ID_Imm12Extended), .DAddr9Extended(ID_DAddr9Extended)
+							, .UncondMuxOut, .UncondBr, .MEMWB_Rd, .shamt(ID_shamt));
 	// Control Unit
 	logic ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_BrTaken, ID_read_enable, ID_NOOP, ID_shiftDirection;
 	logic [1:0] ID_ALUSrc, ID_ALUResult;
