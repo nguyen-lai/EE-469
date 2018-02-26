@@ -158,6 +158,33 @@ module cpu(clk, reset);
 	 mem theMEMStage(.clk, .reset, .EXMEM_ALUResult(MEM_ALUResult_out), .EXMEM_RegB_content(MEM_RegB_content), .EXMEM_MemWrite(MEM_MemWrite)
 			, .EXMEM_read_enable(MEM_read_enable), .EXMEM_xfer_size(MEM_xfer_size), .MEM_datafromMem);
 	
+	
+	//-------------------------------------MEMWBReg outputs---------------------------------------------
+	
+	logic WB_MemToReg, WB_RegWrite;
+	logic [63:0] WB_datafromMem, WB_ALUResult_out;
+	
+	logic [4:0] WB_Rd;
+	
+	//---------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	MEMWBReg theMEMWBReg(
+		.WB_MemToReg, .WB_RegWrite,
+		.WB_datafromMem,
+		.WB_Rd,
+		.WB_ALUResult_out,
+		.clk, .reset,
+		.MEM_MemToReg, .MEM_RegWrite,
+		.MEM_datafromMem,
+		.MEM_Rd,
+		.MEM_ALUResult_out
+	);
+	
+	
+	
 endmodule
 
 module cpu_testbench();

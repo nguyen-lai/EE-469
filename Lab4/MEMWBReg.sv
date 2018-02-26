@@ -12,12 +12,12 @@ module MEMWBReg(
 	WB_MemToReg, WB_RegWrite,
 	WB_datafromMem,
 	WB_Rd,
-	WB_ALUResult,
+	WB_ALUResult_out,
 	clk, reset,
 	MEM_MemToReg, MEM_RegWrite,
 	MEM_datafromMem,
 	MEM_Rd,
-	MEM_ALUResult
+	MEM_ALUResult_out
 );
 
 
@@ -28,7 +28,7 @@ module MEMWBReg(
 
 	output logic WB_MemToReg, WB_RegWrite;
 
-	output logic [63:0] WB_datafromMem, WB_ALUResult;
+	output logic [63:0] WB_datafromMem, WB_ALUResult_out;
 
 	output logic [4:0] WB_Rd;
 
@@ -42,7 +42,7 @@ module MEMWBReg(
 
 	input logic MEM_MemToReg, MEM_RegWrite;
 	
-	input logic [63:0] MEM_datafromMem, MEM_ALUResult;
+	input logic [63:0] MEM_datafromMem, MEM_ALUResult_out;
 	
 	input logic [4:0] MEM_Rd;
 
@@ -54,7 +54,7 @@ module MEMWBReg(
 	parameterized_register #(.SIZE(1)) RegWriteReg(.d(MEM_RegWrite), .q(WB_RegWrite), .en(1'b1), .reset, .clk);
 
 	parameterized_register #(.SIZE(64)) datafromMemReg(.d(MEM_datafromMem), .q(WB_datafromMem), .en(1'b1), .reset, .clk);
-	parameterized_register #(.SIZE(64)) ALUResultReg(.d(MEM_ALUResult), .q(WB_ALUResult), .en(1'b1), .reset, .clk);
+	parameterized_register #(.SIZE(64)) ALUResultReg(.d(MEM_ALUResult_out), .q(WB_ALUResult_out), .en(1'b1), .reset, .clk);
 	
 	parameterized_register #(.SIZE(5)) RdReg(.d(MEM_Rd), .q(WB_Rd), .en(1'b1), .reset, .clk);
 	
@@ -65,19 +65,19 @@ module MEMWBReg_testbench();
 
 	logic clk, reset;
 	logic WB_MemToReg, WB_RegWrite, MEM_MemToReg, MEM_RegWrite;
-	logic [63:0] WB_datafromMem, WB_ALUResult, MEM_datafromMem, MEM_ALUResult;
+	logic [63:0] WB_datafromMem, WB_ALUResult_out, MEM_datafromMem, MEM_ALUResult_out;
 	logic [4:0] WB_Rd, MEM_Rd;
 	
 	MEMWBReg dut(
 	WB_MemToReg, WB_RegWrite,
 	WB_datafromMem,
 	WB_Rd,
-	WB_ALUResult,
+	WB_ALUResult_out,
 	clk, reset,
 	MEM_MemToReg, MEM_RegWrite,
 	MEM_datafromMem,
 	MEM_Rd,
-	MEM_ALUResult
+	MEM_ALUResult_out
 	);
 	
 	//set up the clk
@@ -94,7 +94,7 @@ module MEMWBReg_testbench();
 		 MEM_RegWrite <= 1;
 		 
 		 MEM_datafromMem <= 64'hFFFFFFFFFFFFFFFF;
-		 MEM_ALUResult <= 64'hFFFFFFFFFFFFFFFF;
+		 MEM_ALUResult_out <= 64'hFFFFFFFFFFFFFFFF;
 		 
 		 MEM_Rd <= 5'b11111;
 		 
