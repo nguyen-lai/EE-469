@@ -18,11 +18,11 @@ module cpu(clk, reset);
 	logic [63:0] RegA_content, RegB_content, WriteData_fromWB;
 	logic RegWrite_fromMEMWB, Reg2Loc, UncondBr;
 	logic [63:0] ID_Imm12Extended, ID_DAddr9Extended;
-	logic [63:0] UncondMuxOut;
+	logic [63:0] ID_UncondMuxOut;
 	logic [4:0] MEMWB_Rd;
 	logic [5:0] ID_shamt;
 	instructDecode theIDStage(.clk, .reset, .ID_instruction, .IFID_Rn, .IFID_Rm, .IFID_Rd, .RegA_content, .RegB_content, .WriteData_fromWB, .RegWrite_fromMEMWB, .Reg2Loc, .Imm12Extended(ID_Imm12Extended), .DAddr9Extended(ID_DAddr9Extended)
-							, .UncondMuxOut, .UncondBr, .MEMWB_Rd, .shamt(ID_shamt));
+							, .UncondMuxOut(ID_UncondMuxOut), .UncondBr, .MEMWB_Rd, .shamt(ID_shamt));
 	// Control Unit
 	logic ID_RegWrite, ID_MemWrite, ID_MemToReg, ID_BrTaken, ID_read_enable, ID_NOOP, ID_shiftDirection;
 	logic [1:0] ID_ALUSrc, ID_ALUResult;
@@ -104,6 +104,16 @@ module cpu(clk, reset);
 	//shift/mult result mux control signal
 	.ID_ALUResult
 	);
+	
+	
+	// EX STAGE
+	logic [63:0] WB_MemToRegOut, EXMEM_ALUResult;
+	logic [1:0] ForwardA, ForwardB;
+	logic EX_carryout;
+	logic [63:0] EX_IncrementedPC, EX_ALUResult_out;
+	exec TheEXStage(.clk, .reset, .Da(EX_RegA_content), .Db(EX_RegB_content), .WB_MemToRegOut, .EXMEM_ALUResult, .ForwardA, .ForwardB, .ALUSrc(EX_ALUSRC), .ALUOp(EX_ALUOp), .IDEX_PC(EX_PC), IDEX_UncondBrMuxOut, .IDEX_DAddr9(EX_DAddr9Extended)
+				, .IDEX_Imm12(EX_Imm12Extended), .overflowFlag(EX_overflow), negativeFlag(EX_negative), .carryoutFlag(EX_carryout), .zeroFlag(EX_zero)
+				, .PCplusBranch(EX_IncrementedPC), .EX_ALUResult_out, .shiftDirection(EX_shiftDirection), .shamt(EX_shamt), .ALUResult(EX_ALUResult));
 	
 endmodule
 
