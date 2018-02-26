@@ -155,7 +155,7 @@ module cpu(clk, reset);
 	
 	// MEM STAGE
 	logic [63:0] MEM_datafromMem;
-	 mem theMEMStage(.clk, .reset, .EXMEM_ALUResult(MEM_ALUResult_out), .EXMEM_RegB_content(MEM_RegB_content), .EXMEM_MemWrite(MEM_Write)
+	 mem theMEMStage(.clk, .reset, .EXMEM_ALUResult(MEM_ALUResult_out), .EXMEM_RegB_content(MEM_RegB_content), .EXMEM_MemWrite(MEM_MemWrite)
 			, .EXMEM_read_enable(MEM_read_enable), .EXMEM_xfer_size(MEM_xfer_size), .MEM_datafromMem);
 	
 endmodule

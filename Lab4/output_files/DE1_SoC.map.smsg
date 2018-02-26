@@ -10,3 +10,4 @@ Warning (10030): Net "MEMWB_Rd" at cpu.sv(21) has no driver or initial value, us
 Warning (10030): Net "WB_MemToRegOut" at cpu.sv(113) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 113
 Warning (10030): Net "ForwardA" at cpu.sv(114) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 114
 Warning (10030): Net "ForwardB" at cpu.sv(114) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 114
+Warning (10030): Net "RegWrite_fromMEMWB" at cpu.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 18
