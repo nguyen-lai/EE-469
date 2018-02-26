@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Mon Feb 26 13:53:03 2018
+Mon Feb 26 14:08:06 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Mon Feb 26 13:53:03 2018           ;
+; Analysis & Elaboration Status ; Failed - Mon Feb 26 14:08:06 2018           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; cpu                                         ;
@@ -162,7 +162,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Feb 26 13:52:53 2018
+    Info: Processing started: Mon Feb 26 14:07:55 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file memwbreg.sv
@@ -285,7 +285,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file writeba
     Info (12023): Found entity 1: writeback File: C:/Users/Nguyen/Documents/EE-469/Lab4/writeback.sv Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file cpu.sv
     Info (12023): Found entity 1: cpu File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 2
-    Info (12023): Found entity 2: cpu_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 163
+    Info (12023): Found entity 2: cpu_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 196
 Info (12127): Elaborating entity "cpu" for the top level hierarchy
 Info (12128): Elaborating entity "instructFetch" for hierarchy "instructFetch:theIFStage" File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 8
 Info (12128): Elaborating entity "instructmem" for hierarchy "instructFetch:theIFStage|instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
@@ -295,10 +295,10 @@ Info (10648): Verilog HDL Display System Task info at instructmem.sv(43): Runnin
 Error (12152): Can't elaborate user hierarchy "instructFetch:theIFStage|instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg
 Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 7 warnings
-    Error: Peak virtual memory: 660 megabytes
-    Error: Processing ended: Mon Feb 26 13:53:03 2018
-    Error: Elapsed time: 00:00:10
-    Error: Total CPU time (on all processors): 00:00:20
+    Error: Peak virtual memory: 664 megabytes
+    Error: Processing ended: Mon Feb 26 14:08:06 2018
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:23
 
 
 +--------------------------------------------+
