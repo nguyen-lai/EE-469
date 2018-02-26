@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 module exec(clk, reset, Da, Db, WB_MemToRegOut, EXMEM_ALUResult, ForwardA, ForwardB, ALUSrc, ALUOp, IDEX_PC, IDEX_UncondBrMuxOut, IDEX_DAddr9, IDEX_Imm12, overflowFlag, negativeFlag, carryoutFlag, zeroFlag
-				, PCplusBranch, EX_ALUResult_out);
+				, PCplusBranch, EX_ALUResult_out, shiftDirection, shamt, ALUResult);
 				
 input logic clk, reset;
 input logic [63:0] Da, Db;
@@ -11,6 +11,9 @@ input logic [1:0] ALUSrc;
 input logic [2:0] ALUOp;
 input logic [63:0] IDEX_PC, IDEX_DAddr9, IDEX_Imm12;
 input logic [63:0] IDEX_UncondBrMuxOut;
+input logic shiftDirection;
+input logic [1:0] ALUResult;
+input logic [5:0] shamt;
 output logic overflowFlag, negativeFlag, carryoutFlag, zeroFlag;
 output logic [63:0] PCplusBranch, EX_ALUResult_out;
 
@@ -39,6 +42,21 @@ addressAdder theAddressAdder (.A(IDEX_PC), .B(shifterOut), .sum(PCplusBranch));
 
 //Set up ALU
 logic zeroFromALU;
-alu theALU (.A(ForwardAMux_Out), .B(ALUSrcMux_Out), .cntrl(ALUOp), .result(EX_ALUResult_out), .negative(negativeFlag), .zero(zeroFromALU), .overflow(overflowFlag), .carry_out(carryoutFlag));
+logic [63:0] ALU_result;
+alu theALU (.A(ForwardAMux_Out), .B(ALUSrcMux_Out), .cntrl(ALUOp), .result(ALU_result), .negative(negativeFlag), .zero(zeroFromALU), .overflow(overflowFlag), .carry_out(carryoutFlag));
+
+//Set up shifter
+logic [63:0] shifterOut2;
+shifter theShifter (.value(ForwardAMux_Out), .direction(shiftDirection), .distance(shamt), .result(shifterOut2));
+
+//Set up multiplier
+logic [63:0] multiplierOut;
+logic [63:0] multiplierHigh;
+mult theMultiplier (.A(ForwardAMux_Out), .B(ForwardBMux_Out), .doSigned(1'b1), .mult_low(multiplierOut), .mult_high(multiplierHigh));
+
+
+//Set up ALU Result Mux
+mux_64x4to1 theALUResultMux (.A(ALU_result), .B(multiplierOut), .C(shifterOut2), .D(64'dx), .select(ALUResult), .out(EX_ALUResult_out));
+
 
 endmodule

@@ -5,7 +5,8 @@ vlib work
 #     All Verilog files that are part of this design should have
 #     their own "vlog" line below.
 vlog "./cpu.sv"
-vlog "./datapath.sv"
+vlog "./instructFetch.sv"
+vlog "./IFID_register.sv"
 vlog "./controlSignals.sv"
 vlog "./mux_5x2to1.sv"
 vlog "./regfile.sv"
@@ -37,7 +38,7 @@ vsim -voptargs="+acc" -t 1ps -lib work cpu_testbench
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-do wave.do
+do testwave.do
 
 # Set the window types
 view wave

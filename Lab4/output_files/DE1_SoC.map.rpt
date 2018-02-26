@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Sun Feb 25 13:40:50 2018
+Sun Feb 25 16:17:28 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,10 +38,10 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Sun Feb 25 13:40:50 2018           ;
+; Analysis & Elaboration Status ; Failed - Sun Feb 25 16:17:28 2018           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
-; Top-level Entity Name         ; instructFetch                               ;
+; Top-level Entity Name         ; cpu                                         ;
 ; Family                        ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
 ; Total registers               ; N/A until Partition Merge                   ;
@@ -75,7 +75,7 @@ agreement for further details.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
-; Top-level entity name                                                           ; instructFetch      ; DE1_SoC            ;
+; Top-level entity name                                                           ; cpu                ; DE1_SoC            ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; State Machine Processing                                                        ; User-Encoded       ; Auto               ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
@@ -162,14 +162,21 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Feb 25 13:40:37 2018
+    Info: Processing started: Sun Feb 25 16:17:17 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file parameterized_register.sv
     Info (12023): Found entity 1: parameterized_register File: C:/Users/Nguyen/Documents/EE-469/Lab4/parameterized_register.sv Line: 12
+Warning (10238): Verilog Module Declaration warning at IDEXreg.sv(68): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "IDEXreg" File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 68
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(283): truncated literal to match 8 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 283
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(285): truncated literal to match 16 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 285
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(286): truncated literal to match 16 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 286
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(287): truncated literal to match 16 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 287
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(288): truncated literal to match 16 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 288
+Warning (10229): Verilog HDL Expression warning at IDEXreg.sv(289): truncated literal to match 16 bits File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 289
 Info (12021): Found 2 design units, including 2 entities, in source file idexreg.sv
-    Info (12023): Found entity 1: IDEXreg File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 9
-    Info (12023): Found entity 2: IDEXreg_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 142
+    Info (12023): Found entity 1: IDEXreg File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 11
+    Info (12023): Found entity 2: IDEXreg_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 174
 Info (12021): Found 4 design units, including 4 entities, in source file math.sv
     Info (12023): Found entity 1: mult File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 3
     Info (12023): Found entity 2: shifter File: C:/Users/Nguyen/Documents/EE-469/Lab4/math.sv Line: 33
@@ -242,7 +249,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file pc.sv
     Info (12023): Found entity 1: PC File: C:/Users/Nguyen/Documents/EE-469/Lab4/PC.sv Line: 3
 Info (12021): Found 2 design units, including 2 entities, in source file controlsignals.sv
     Info (12023): Found entity 1: controlSignals File: C:/Users/Nguyen/Documents/EE-469/Lab4/controlSignals.sv Line: 12
-    Info (12023): Found entity 2: controlSignals_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/controlSignals.sv Line: 239
+    Info (12023): Found entity 2: controlSignals_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/controlSignals.sv Line: 223
 Info (12021): Found 1 design units, including 1 entities, in source file mux_64x2to1.sv
     Info (12023): Found entity 1: mux_64x2to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x2to1.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux_5x2to1.sv
@@ -259,26 +266,34 @@ Info (12021): Found 2 design units, including 2 entities, in source file ifid_re
     Info (12023): Found entity 2: IFID_register_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/IFID_register.sv Line: 25
 Info (12021): Found 2 design units, including 2 entities, in source file instructdecode.sv
     Info (12023): Found entity 1: instructDecode File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 2
-    Info (12023): Found entity 2: instructDecode_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 70
+    Info (12023): Found entity 2: instructDecode_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructDecode.sv Line: 71
 Info (12021): Found 1 design units, including 1 entities, in source file exec.sv
     Info (12023): Found entity 1: exec File: C:/Users/Nguyen/Documents/EE-469/Lab4/exec.sv Line: 2
 Info (12021): Found 2 design units, including 2 entities, in source file mux_64x4to1.sv
     Info (12023): Found entity 1: mux_64x4to1 File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x4to1.sv Line: 2
     Info (12023): Found entity 2: mux_64x4to1_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/mux_64x4to1.sv Line: 16
-Warning (10236): Verilog HDL Implicit Net warning at IDEXreg.sv(123): created implicit net for "ID_ALUOP" File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 123
-Warning (10236): Verilog HDL Implicit Net warning at IDEXreg.sv(123): created implicit net for "EX_ALUOP" File: C:/Users/Nguyen/Documents/EE-469/Lab4/IDEXreg.sv Line: 123
-Info (12127): Elaborating entity "instructFetch" for the top level hierarchy
-Info (12128): Elaborating entity "instructmem" for hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file forwardingunit.sv
+    Info (12023): Found entity 1: forwardingUnit File: C:/Users/Nguyen/Documents/EE-469/Lab4/forwardingUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mem.sv
+    Info (12023): Found entity 1: mem File: C:/Users/Nguyen/Documents/EE-469/Lab4/mem.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file writeback.sv
+    Info (12023): Found entity 1: writeback File: C:/Users/Nguyen/Documents/EE-469/Lab4/writeback.sv Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file cpu.sv
+    Info (12023): Found entity 1: cpu File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 2
+    Info (12023): Found entity 2: cpu_testbench File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 40
+Info (12127): Elaborating entity "cpu" for the top level hierarchy
+Info (12128): Elaborating entity "instructFetch" for hierarchy "instructFetch:theIFStage" File: C:/Users/Nguyen/Documents/EE-469/Lab4/cpu.sv Line: 9
+Info (12128): Elaborating entity "instructmem" for hierarchy "instructFetch:theIFStage|instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Warning (10175): Verilog HDL warning at instructmem.sv(24): ignoring unsupported system task File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 24
-Error (10170): Verilog HDL syntax error at test04_LdurStur.arm(42) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/Users/Nguyen/Documents/EE-469/Lab4/benchmarks/test04_LdurStur.arm Line: 42
+Error (10170): Verilog HDL syntax error at test01_AddiB.arm(25) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/Users/Nguyen/Documents/EE-469/Lab4/benchmarks/test01_AddiB.arm Line: 25
 Info (10648): Verilog HDL Display System Task info at instructmem.sv(43): Running benchmark:  File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructmem.sv Line: 43
-Error (12152): Can't elaborate user hierarchy "instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
+Error (12152): Can't elaborate user hierarchy "instructFetch:theIFStage|instructmem:fecthInstruct" File: C:/Users/Nguyen/Documents/EE-469/Lab4/instructFetch.sv Line: 19
 Info (144001): Generated suppressed messages file C:/Users/Nguyen/Documents/EE-469/Lab4/output_files/DE1_SoC.map.smsg
-Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 3 warnings
-    Error: Peak virtual memory: 661 megabytes
-    Error: Processing ended: Sun Feb 25 13:40:50 2018
-    Error: Elapsed time: 00:00:13
-    Error: Total CPU time (on all processors): 00:00:24
+Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 8 warnings
+    Error: Peak virtual memory: 660 megabytes
+    Error: Processing ended: Sun Feb 25 16:17:28 2018
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:21
 
 
 +--------------------------------------------+

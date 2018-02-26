@@ -1,0 +1,9 @@
+module mem(clk, reset, EXMEM_ALUResult, EXMEM_RegB_content, EXMEM_MemWrite, EXMEM_read_enable, EXMEM_xfer_size, MEM_datafromMem);
+	input logic clk, reset;
+	input logic [63:0] EXMEM_ALUResult; EXMEM_RegB_content; 
+	input logic EXMEM_MemWrite, EXMEM_read_enable;
+	input logic [3:0] EXMEM_xfer_size;
+	output logic [63:0] MEM_datafromMem;
+	
+	
+	

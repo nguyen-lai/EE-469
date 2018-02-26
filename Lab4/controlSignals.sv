@@ -10,12 +10,12 @@ Control Signals for CPU
 *********************************************/
 `timescale 1ns/10ps
 module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToReg, UncondBr, BrTaken, instruction, 
-								xfer_size, negative, overflow, read_enable, NOOP, LDURB, MOVZnotMOVK);
+								xfer_size, negative, overflow, read_enable, NOOP, shiftDirection, ALUResult);
 	parameter DELAY = 0.05;
 	input logic [31:0] instruction;
 	input logic zero, negative, overflow;
-	output logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, BrTaken, read_enable, NOOP, LDURB, MOVZnotMOVK;
-	output logic [1:0] ALUSrc;
+	output logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, BrTaken, read_enable, NOOP, shiftDirection;
+	output logic [1:0] ALUSrc, ALUResult;
 	output logic [2:0] ALUOp;
 	output logic [3:0] xfer_size;
 	
@@ -30,10 +30,10 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				CBZ = 11'b10110100xxx,
 				LDUR = 11'b11111000010,
 				STUR = 11'b11111000000,
-				LDURB_Signals = 11'b00111000010,
-				STURB = 11'b00111000000,
-				MOVK = 11'b111_1001_01xx,
-				MOVZ = 11'b110_1001_01xx;
+				LSL = 11'b11010011011,
+				LSR = 11'b11010011010,
+				MUL = 11'b10011011000;
+
 				
 				
 	always_comb begin
@@ -50,8 +50,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
 				NOOP = 1'b1;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 			
 			ADDI: begin
@@ -69,8 +69,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				BrTaken = 1'b0;
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
-				LDURB = 1'b0;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
 			ADDS: begin
@@ -85,8 +85,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
 				NOOP = 1'b0;
-				LDURB = 1'b0;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
 			SUBS: begin
@@ -101,8 +101,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
 				NOOP = 1'b0;
-				LDURB = 1'b0;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 
 			BLT: begin
@@ -117,8 +117,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
 				NOOP = 1'b1;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
 			CBZ: begin
@@ -133,8 +133,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'bxxxx;
 				NOOP = 1'b0;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
 			LDUR: begin
@@ -149,8 +149,8 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b1;
 				xfer_size = 4'b1000;
 				NOOP = 1'b1;
-				LDURB = 1'b0;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
 			STUR: begin
@@ -165,73 +165,57 @@ module controlSignals (Reg2Loc, RegWrite, ALUSrc, ALUOp, zero, MemWrite, MemToRe
 				read_enable = 1'b0;
 				xfer_size = 4'b1000;
 				NOOP = 1'b1;
-				LDURB = 1'b0;
-				MOVZnotMOVK = 1'bx;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b00;
 				end
 				
-			LDURB_Signals: begin
+			LSL: begin
 				Reg2Loc = 1'bx;
 				RegWrite = 1'b1;
-				ALUSrc = 2'b01;
-				ALUOp = 3'b010;
-				MemWrite = 1'b0;
-				MemToReg = 1'b1;
-				UncondBr = 1'bx;
-				BrTaken = 1'b0;
-				read_enable = 1'b1;
-				xfer_size = 4'b0001;
-				NOOP = 1'b1;
-				LDURB = 1'b1;
-				MOVZnotMOVK = 1'bx;
-				end
-				
-			STURB: begin
-				Reg2Loc = 1'b0;
-				RegWrite = 1'b0;
-				ALUSrc = 2'b01;
-				ALUOp = 3'b010;
-				MemWrite = 1'b1;
-				MemToReg = 1'bx;
-				UncondBr = 1'bx;
-				BrTaken = 1'b0;
-				read_enable = 1'b0;
-				xfer_size = 4'b0001;
-				NOOP = 1'b1;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'bx;
-				end
-				
-			MOVK: begin
-				Reg2Loc = 1'b0;
-				RegWrite = 1'b1;
-				ALUSrc = 2'b11;
-				ALUOp = 3'b000;
+				ALUSrc = 2'bxx;
+				ALUOp = 3'bxxx;
 				MemWrite = 1'b0;
 				MemToReg = 1'b0;
 				UncondBr = 1'bx;
 				BrTaken = 1'b0;
 				read_enable = 1'b0;
-				xfer_size = 4'bxxxx;
-				NOOP = 1'b1;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'b0;
+				xfer_size = 4'b1000;
+				NOOP = 1'b0;
+				shiftDirection = 1'b0;
+				ALUResult = 2'b10;
+				end	
+				
+			LSR: begin
+				Reg2Loc = 1'bx;
+				RegWrite = 1'b1;
+				ALUSrc = 2'bxx;
+				ALUOp = 3'bxxx;
+				MemWrite = 1'b0;
+				MemToReg = 1'b0;
+				UncondBr = 1'bx;
+				BrTaken = 1'b0;
+				read_enable = 1'b0;
+				xfer_size = 4'b1000;
+				NOOP = 1'b0;
+				shiftDirection = 1'b1;
+				ALUResult = 2'b10;
 				end
 
-			MOVZ: begin
-				Reg2Loc = 1'b0;
+			MUL: begin
+				Reg2Loc = 1'b1;
 				RegWrite = 1'b1;
-				ALUSrc = 2'b11;
-				ALUOp = 3'b000;
+				ALUSrc = 2'bxx;
+				ALUOp = 3'bxxx;
 				MemWrite = 1'b0;
 				MemToReg = 1'b0;
 				UncondBr = 1'bx;
 				BrTaken = 1'b0;
 				read_enable = 1'b0;
-				xfer_size = 4'bxxxx;
-				NOOP = 1'b1;
-				LDURB = 1'bx;
-				MOVZnotMOVK = 1'b1;
-				end								
+				xfer_size = 4'b1000;
+				NOOP = 1'b0;
+				shiftDirection = 1'bx;
+				ALUResult = 2'b01;
+				end				
 		endcase
 	end
 endmodule
@@ -239,8 +223,8 @@ endmodule
 module controlSignals_testbench();
 	logic [31:0] instruction;
 	logic zero, negative, overflow;
-	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, BrTaken, read_enable, NOOP, LDURB, MOVZnotMOVK;
-	logic [1:0] ALUSrc;
+	logic Reg2Loc, RegWrite, MemWrite, MemToReg, UncondBr, BrTaken, read_enable, NOOP, shiftDirection;
+	logic [1:0] ALUSrc, ALUResult;
 	logic [2:0] ALUOp;
 	logic [3:0] xfer_size;
 	
@@ -252,11 +236,12 @@ module controlSignals_testbench();
 				CBZ = 11'b10110100xxx,
 				LDUR = 11'b11111000010,
 				STUR = 11'b11111000000,
-				LDURB_Signals = 11'b00111000010,
-				STURB = 11'b00111000000;
+				LSL = 11'b11010011011,
+				LSR = 11'b11010011010,
+				MUL = 11'b10011011000;
 				
 	controlSignals dut (.Reg2Loc, .RegWrite, .ALUSrc, .ALUOp, .zero, .MemWrite, .MemToReg, .UncondBr, .BrTaken, .instruction, 
-							.xfer_size, .negative, .overflow, .read_enable, .NOOP, .LDURB, .MOVZnotMOVK);
+							.xfer_size, .negative, .overflow, .read_enable, .NOOP, .shiftDirection, .ALUResult);
 	
 	initial begin
 		negative = 1'b0;

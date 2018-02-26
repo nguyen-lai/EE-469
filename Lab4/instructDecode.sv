@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 module instructDecode(clk, reset, ID_instruction, IFID_Rn, IFID_Rm, IFID_Rd, RegA_content, RegB_content, WriteData_fromWB, RegWrite_fromMEMWB, Reg2Loc, Imm12Extended, DAddr9Extended
-							, UncondMuxOut, UncondBr, MEMWB_Rd);
+							, UncondMuxOut, UncondBr, MEMWB_Rd, shamt);
 	input logic clk, reset;
 	input logic [31:0] ID_instruction;
 	input logic [63:0] WriteData_fromWB;
@@ -11,12 +11,13 @@ module instructDecode(clk, reset, ID_instruction, IFID_Rn, IFID_Rm, IFID_Rd, Reg
 	output logic [63:0] Imm12Extended;
 	output logic [63:0] DAddr9Extended;
 	output logic [63:0] UncondMuxOut;
+	output logic [5:0] shamt;
 	
 // Assign statements for readability
 assign IFID_Rn = ID_instruction[9:5];
 assign IFID_Rm = ID_instruction[20:16];
 assign IFID_Rd = ID_instruction[4:0];
-
+assign shamt = ID_instruction[15:10];
 
 logic [11:0]imm12;
 assign imm12 = ID_instruction[21:10];
@@ -78,9 +79,10 @@ module instructDecode_testbench();
 	logic [63:0] DAddr9Extended;
 	logic [63:0] UncondMuxOut;
 	logic [4:0] MEMWB_Rd;
+	logic [5:0] shamt;
 	
 instructDecode dut(.clk, .reset, .ID_instruction, .IFID_Rn, .IFID_Rm, .IFID_Rd, .RegA_content, .RegB_content, .WriteData_fromWB, .RegWrite_fromMEMWB, .Reg2Loc, .Imm12Extended, .DAddr9Extended
-							, .UncondMuxOut, .UncondBr, .MEMWB_Rd);
+							, .UncondMuxOut, .UncondBr, .MEMWB_Rd, .shamt);
 							
 parameter CLOCK_PERIOD= 10000;
 	initial begin
