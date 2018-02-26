@@ -145,7 +145,7 @@ module EXMEMReg_testbench();
 		EX_Rm <= 5'b00000;
 		EX_Rd <= 5'b10101;
 		
-		EX_ALUResult <= 64'hFFFFFFFF0000000F;
+		EX_ALUResult_out <= 64'hFFFFFFFF0000000F;
 		EX_IncrementedPC <= 64'hA;
 		EX_RegB_content <= 64'hFFFFFFFFFFFFFFF0;
 	

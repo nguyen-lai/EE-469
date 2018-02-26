@@ -38,6 +38,7 @@ module IDEXreg(
 	
 	//shift/mult result mux control signal
 	EX_ALUResult,
+	EX_UncondMuxOut,
 	
 	
 	//control signal inputs
@@ -66,7 +67,7 @@ module IDEXreg(
 	//shift/mult result mux control signal
 	ID_ALUResult,
 	
-	
+	ID_UncondMuxOut
 
 ); 
 
@@ -86,7 +87,7 @@ module IDEXreg(
 	output logic [31:0] EX_instruction;
 	
 	//Regfile read data outputs
-	output logic [63:0] EX_RegA_content, EX_RegB_content;
+	output logic [63:0] EX_RegA_content, EX_RegB_content, EX_UncondMuxOut;
 	
 	//Rm, Rn, and Rd
 	output logic [4:0] EX_Rn, EX_Rm, EX_Rd;
@@ -122,7 +123,7 @@ module IDEXreg(
 	input logic [4:0] IFID_Rn, IFID_Rm, IFID_Rd;
 	
 	//sign-extended Imm inputs 
-	input logic [63:0] ID_Imm12Extended, ID_DAddr9Extended;
+	input logic [63:0] ID_Imm12Extended, ID_DAddr9Extended, ID_UncondMuxOut;
 	
 	//shamt input and ALU result control signal
 	input logic [5:0] ID_shamt;
@@ -165,6 +166,7 @@ module IDEXreg(
 	 
 	 parameterized_register #(.SIZE(64)) Imm12Reg(.d(ID_Imm12Extended), .q(EX_Imm12Extended), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(64)) DAddr9Reg(.d(ID_DAddr9Extended), .q(EX_DAddr9Extended), .en(1'b1), .reset, .clk);
+	 parameterized_register #(.SIZE(64)) UncondMuxOutReg(.d(ID_UncondMuxOut), .q(EX_UncondMuxOut), .en(1'b1), .reset, .clk);
 	 
 	 parameterized_register #(.SIZE(6)) shamtReg(.d(ID_shamt), .q(EX_shamt), .en(1'b1), .reset, .clk);
 	 parameterized_register #(.SIZE(2)) ALUResultReg(.d(ID_ALUResult), .q(EX_ALUResult), .en(1'b1), .reset, .clk);
@@ -186,8 +188,8 @@ module IDEXreg_testbench();
 	logic [5:0] ID_shamt, EX_shamt;
 	logic[31:0] EX_instruction, ID_instruction;
 	
-	logic[63:0] ID_PC, ID_RegA_content, ID_RegB_content, ID_Imm12Extended, ID_DAddr9Extended;
-	logic[63:0] EX_PC, EX_RegA_content, EX_RegB_content, EX_Imm12Extended, EX_DAddr9Extended;
+	logic[63:0] ID_PC, ID_RegA_content, ID_RegB_content, ID_Imm12Extended, ID_DAddr9Extended, ID_UncondMuxOut;
+	logic[63:0] EX_PC, EX_RegA_content, EX_RegB_content, EX_Imm12Extended, EX_DAddr9Extended, EX_UncondMuxOut;
 
 	IDEXreg dut(
 
@@ -218,6 +220,8 @@ module IDEXreg_testbench();
 	//shift/mult result mux control signal
 	.EX_ALUResult,
 	
+	.EX_UncondMuxOut,
+	
 	
 	//control signal inputs.
 	.ID_RegWrite, .ID_MemWrite, .ID_MemToReg, .ID_BrTaken,
@@ -240,8 +244,9 @@ module IDEXreg_testbench();
 	.ID_Imm12Extended, .ID_DAddr9Extended,
 	
 		//shamt input and ALU result control signal
-	.ID_shamt, .ID_ALUResult
+	.ID_shamt, .ID_ALUResult,
 	
+	.ID_UncondMuxOut
 	);
 	
 	//set up the clk
