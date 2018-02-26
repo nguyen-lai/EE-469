@@ -14,7 +14,7 @@ module EXMEMReg(
 	
 	MEM_Rn, MEM_Rm, MEM_Rd,
 	
-	MEM_ALUResult, MEM_IncrementedPC, MEM_RegB_content,
+	MEM_ALUResult_out, MEM_IncrementedPC, MEM_RegB_content,
 	
 	//inputs
 	clk, reset,
@@ -25,17 +25,18 @@ module EXMEMReg(
 	
 	EX_Rn, EX_Rm, EX_Rd,
 	
-	EX_ALUResult, EX_IncrementedPC, EX_RegB_content
+	EX_ALUResult_out, EX_IncrementedPC, EX_RegB_content
 );
 
 //-----------------------OUTPUTS----------------------------------------------
 	output logic MEM_RegWrite, MEM_MemWrite, MEM_MemToReg, MEM_BrTaken,
-	MEM_read_enable, MEM_NOOP, MEM_xfer_size;
+	MEM_read_enable, MEM_NOOP;
 	
 	
+	output logic [3:0] MEM_xfer_size;
 	output logic [4:0] MEM_Rn, MEM_Rm, MEM_Rd;
 
-	output logic [63:0] MEM_ALUResult, MEM_IncrementedPC, MEM_RegB_content;
+	output logic [63:0] MEM_ALUResult_out, MEM_IncrementedPC, MEM_RegB_content;
 
 //----------------------------------------------------------------------------
 
@@ -45,12 +46,12 @@ module EXMEMReg(
 
 	input logic clk, reset;
 	input logic EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken,
-	EX_read_enable, EX_NOOP, EX_xfer_size;
+	EX_read_enable, EX_NOOP;
 	
-	
+	input logic [3:0] EX_xfer_size;
 	input logic [4:0] EX_Rn, EX_Rm, EX_Rd;
 
-	input logic [63:0] EX_ALUResult, EX_IncrementedPC, EX_RegB_content;
+	input logic [63:0] EX_ALUResult_out, EX_IncrementedPC, EX_RegB_content;
 	
 //------------------------------------------------------------------------------
 	
@@ -62,14 +63,15 @@ module EXMEMReg(
 	parameterized_register #(.SIZE(1)) BrTakenReg(.d(EX_BrTaken), .q(MEM_BrTaken), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(1)) read_enableReg(.d(EX_read_enable), .q(MEM_read_enable), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(1)) NOOPReg(.d(EX_NOOP), .q(MEM_NOOP), .en(1'b1), .reset, .clk);
-	parameterized_register #(.SIZE(1)) xfer_sizeReg(.d(EX_xfer_size), .q(MEM_xfer_size), .en(1'b1), .reset, .clk);
+	
+	parameterized_register #(.SIZE(4)) xfer_sizeReg(.d(EX_xfer_size), .q(MEM_xfer_size), .en(1'b1), .reset, .clk);
 	
 	
 	parameterized_register #(.SIZE(5)) RnReg(.d(EX_Rn), .q(MEM_Rn), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(5)) RmReg(.d(EX_Rm), .q(MEM_Rm), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(5)) RdReg(.d(EX_Rd), .q(MEM_Rd), .en(1'b1), .reset, .clk);
 	
-	parameterized_register #(.SIZE(64)) ALUResultReg(.d(EX_ALUResult), .q(MEM_ALUResult), .en(1'b1), .reset, .clk);
+	parameterized_register #(.SIZE(64)) ALUResultReg(.d(EX_ALUResult_out), .q(MEM_ALUResult_out), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(64)) IncrementedPCReg(.d(EX_IncrementedPC), .q(MEM_IncrementedPC), .en(1'b1), .reset, .clk);
 	parameterized_register #(.SIZE(64)) RegB_contentReg(.d(EX_RegB_content), .q(MEM_RegB_content), .en(1'b1), .reset, .clk);
 	
@@ -84,18 +86,18 @@ module EXMEMReg_testbench();
 	logic clk, reset;
 	
 	logic MEM_RegWrite, MEM_MemWrite, MEM_MemToReg, MEM_BrTaken,
-	MEM_read_enable, MEM_NOOP, MEM_xfer_size;
+	MEM_read_enable, MEM_NOOP;
 	
 	logic EX_RegWrite, EX_MemWrite, EX_MemToReg, EX_BrTaken,
-	EX_read_enable, EX_NOOP, EX_xfer_size;
+	EX_read_enable, EX_NOOP;
 	
-	
+	logic [3:0] MEM_xfer_size, EX_xfer_size;
 	logic [4:0] EX_Rn, EX_Rm, EX_Rd;
 	logic [4:0] MEM_Rn, MEM_Rm, MEM_Rd;
 	
 	
-	logic [63:0] MEM_ALUResult, MEM_IncrementedPC, MEM_RegB_content;
-	logic [63:0] EX_ALUResult, EX_IncrementedPC, EX_RegB_content;
+	logic [63:0] MEM_ALUResult_out, MEM_IncrementedPC, MEM_RegB_content;
+	logic [63:0] EX_ALUResult_out, EX_IncrementedPC, EX_RegB_content;
 	
 	EXMEMReg dut(
 	//outputs
@@ -104,7 +106,7 @@ module EXMEMReg_testbench();
 	
 	.MEM_Rn, .MEM_Rm, .MEM_Rd,
 	
-	.MEM_ALUResult, .MEM_IncrementedPC, .MEM_RegB_content,
+	.MEM_ALUResult_out, .MEM_IncrementedPC, .MEM_RegB_content,
 	
 	//inputs
 	.clk, .reset,
@@ -115,7 +117,7 @@ module EXMEMReg_testbench();
 	
 	.EX_Rn,.EX_Rm, .EX_Rd,
 	
-	.EX_ALUResult, .EX_IncrementedPC, .EX_RegB_content
+	.EX_ALUResult_out, .EX_IncrementedPC, .EX_RegB_content
 	
 	);
 	
@@ -137,7 +139,7 @@ module EXMEMReg_testbench();
 		EX_BrTaken <= 1;
 		EX_read_enable <= 1;
 		EX_NOOP <= 1;
-		EX_xfer_size <= 1;
+		EX_xfer_size <= 4'b1111;
 		
 		EX_Rn <= 5'b11111;
 		EX_Rm <= 5'b00000;
